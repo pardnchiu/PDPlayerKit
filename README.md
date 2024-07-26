@@ -1,4 +1,4 @@
-# Video Player (JavaScript Library)
+# PDPlayerKit (JavaScript Library)
 
 ![](https://img.shields.io/github/v/release/pardnchiu/PDPlayerKit?color=red) ![](https://img.shields.io/github/size/pardnchiu/PDPlayerKit/dist%2FPDPlayerKit.js?color=green) ![](https://img.shields.io/github/license/pardnchiu/PDPlayerKit?color=blue) ![](https://img.shields.io/badge/creator-Pardn%20Chiu%20邱敬幃-A374BF) 
 
