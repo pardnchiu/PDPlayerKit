@@ -1,0 +1,131 @@
+<!-- 
+
+  Copyright 2023 Pardn Ltd 帕登國際有限公司.
+  Created by Pardn Chiu 邱敬幃.
+  Email: mail@pardn.ltd
+  
+ -->
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="robots" content="index, follow">
+
+        <title>PDPlayerKit | 邱敬幃 Pardn Chiu | GitHub.io</title>
+        <meta name="title" content="PDPlayerKit | 邱敬幃 Pardn Chiu | GitHub.io">
+        <meta name="description" content="(JavaScript Library) A pure JavaScript-based PDPlayerKit, supporting YouTube and general video links, with play, pause, volume adjustment, and fullscreen capabilities. Developed by 邱敬幃 Pardn Chiu.">
+        <meta name="author" content="邱敬幃 Pardn Chiu">
+        <link rel="author" href="https://pardnchiu.github.io">
+        <link rel="canonical" href="https://pardnchiu.github.io/PDPlayerKit/">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:title" content="PDPlayerKit | 邱敬幃 Pardn Chiu | GitHub.io">
+        <meta property="og:description" content="(JavaScript Library) A pure JavaScript-based PDPlayerKit, supporting YouTube and general video links, with play, pause, volume adjustment, and fullscreen capabilities. Developed by 邱敬幃 Pardn Chiu.">
+        <meta property="og:image" content="https://opengraph.githubassets.com/1/pardnchiu/PDPlayerKit">
+        <meta property="og:url" content="https://pardnchiu.github.io/PDPlayerKit/">
+        <meta property="og:site_name" content="邱敬幃 Pardn Chiu 的 Github Page">
+        <meta property="og:type" content="website">
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta property="twitter:title" content="PDPlayerKit | 邱敬幃 Pardn Chiu | GitHub.io">
+        <meta property="twitter:description" content="(JavaScript Library) A pure JavaScript-based PDPlayerKit, supporting YouTube and general video links, with play, pause, volume adjustment, and fullscreen capabilities. Developed by 邱敬幃 Pardn Chiu.">
+        <meta property="twitter:image" content="https://opengraph.githubassets.com/1/pardnchiu/PDPlayerKit">
+        <meta property="twitter:url" content="https://pardnchiu.github.io/PDPlayerKit/">
+
+        <!-- Google Verification -->
+        <meta name="google-site-verification" content="YQQ2f6AchR8dcb55Az2BYd_mw4TrP0J1RApD-v2v65Y">
+
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-L5VYEZPVXX"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-L5VYEZPVXX');
+        </script>
+
+        <!-- Preload and Preconnect -->
+        <link rel="preconnect" href="https://cdn.jsdelivr.net">
+        <link rel="preload" href="https://cdn.jsdelivr.net/gh/pardnchiu/PDExtension-js@latest/js/PDExtension.min.js" as="script" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/gh/pardnchiu/PDExtension-js@latest/js/PDExtension.min.js" copyright="Pardn Ltd"></script>
+
+        <!-- Local Resources -->
+        <link rel="stylesheet" href="./static/css/index.css">
+    </head>
+
+    <body id="page">
+        <div id="player"></div>
+        <section>
+            <button @click="show_sample">插入Sample影片</button>
+            <button @click="show_youtube">插入Youtube影片</button>
+        </section>
+        <script type="module">
+            import { player } from "./dist/PDPlayerKit.js";
+
+            document.addEventListener("DOMContentLoaded", _ => {
+
+                const page = new $dom({
+                    id: "page",
+                    event: {
+                        show_sample: _ => {
+                            const elm = new player({
+                                src: "./static/image/sample.mp4",
+                                volume: 100,
+                                mute: false,
+                                panel: [
+                                    "play",       //播放鍵
+                                    "timebar",    //進度條
+                                    "time",       //進度時間
+                                    "mute",       //靜音鍵
+                                    "full",       //影片
+                                ],
+                                event: {
+                                    ready: function () {
+                                        console.log("ready");
+                                    },
+                                    playing: function () {
+                                        console.log("playing");
+                                    },
+                                    pause: function () {
+                                        console.log("pause");
+                                    },
+                                    end: function () {
+                                        console.log("end");
+                                    }
+                                }
+                            });
+                            "player".$.__child([
+                                elm.body
+                            ]);
+                        },
+                        show_youtube: _ => {
+                            const elm = new player({
+                                videoId: "hvBHWOhPANk",
+                                live: false,
+                                volume: 100,
+                                mute: false,
+                                panel: [
+                                    "play",       //播放鍵
+                                    "timebar",    //進度條
+                                    "time",       //進度時間
+                                    "volume",     //音量鍵
+                                    "rate",       //速率鍵
+                                    "full",       //影片
+                                ]
+                            });
+                            "player".$.__child([
+                                elm.body
+                            ]);
+                        }
+                    }
+                });
+            });
+        </script>
+    </body>
+
+</html>

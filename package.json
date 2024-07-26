@@ -1,0 +1,14 @@
+{
+    "name": "PDPlayerKit",
+    "version": "1.0.0",
+    "description": "",
+    "main": "dist/PDPlayerKit.js",
+    "scripts": {
+        "minify": "npx terser src/PDPlayerKit.js -c -m -o dist/PDPlayerKit.js --config-file terser.config.json --name-cache terser.cache.json",
+        "minify-w": "chokidar 'src/PDPlayerKit.js' -c 'npm run minify'",
+        "sass": "sass sass/:css/ -w --style compressed --no-source-map"
+    },
+    "author": "",
+    "license": "GPL-3.0-only",
+    "devDependencies": {}
+}
