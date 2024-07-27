@@ -1,6 +1,6 @@
 # PDPlayerKit (JavaScript Library)
 
-> PDPlayerKit 是一個輕量級的 JavaScript 播放器 JavaScript 庫，提供嵌入式的 HTML5 影片播放器和 YouTube 播放器，具備高度自定義的控制面板和視覺效果。
+> PDPlayerKit 是一個輕量級的 JavaScript 播放器 JavaScript 庫，提供嵌入式的 HTML5 影片播放器和 YouTube 播放器，具備高度自定義的控制面板和視覺效果。<br>
 > PDPlayerKit is a lightweight JavaScript library that provides embedded HTML5 video players and YouTube players, featuring highly customizable control panels and visual effects.
 
 ![](https://img.shields.io/github/v/release/pardnchiu/PDPlayerKit?color=red) ![](https://img.shields.io/github/size/pardnchiu/PDPlayerKit/dist%2FPDPlayerKit.js?color=green) ![](https://img.shields.io/github/license/pardnchiu/PDPlayerKit?color=blue) ![](https://img.shields.io/badge/creator-Pardn%20Chiu%20邱敬幃-A374BF) 
@@ -45,6 +45,10 @@
 
 此源代碼項目採用 [GPL-3.0](https://github.com/pardnchiu/markdown-editor/blob/main/LICENSE) 許可證授權。<br>
 This source code project is licensed under the [GPL-3.0](https://github.com/pardnchiu/markdown-editor/blob/main/LICENSE) license.
+
+## 下載 / Download
+
+`npm i pdplayerkit`
 
 ## 如何使用 / How to use
 
