@@ -43,8 +43,8 @@
 
 ## 授權 / License
 
-此源代碼項目採用 [GPL-3.0](https://github.com/pardnchiu/markdown-editor/blob/main/LICENSE) 許可證授權。<br>
-This source code project is licensed under the [GPL-3.0](https://github.com/pardnchiu/markdown-editor/blob/main/LICENSE) license.
+此源代碼項目採用 [GPL-3.0](https://github.com/pardnchiu/PDPlayerKit/blob/main/LICENSE) 許可證授權。<br>
+This source code project is licensed under the [GPL-3.0](https://github.com/pardnchiu/PDPlayerKit/blob/main/LICENSE) license.
 
 ## 下載 / Download
 
@@ -64,13 +64,10 @@ npm i pdplayerkit
 import { player } from "https://cdn.jsdelivr.net/gh/pardnchiu/PDPlayerKit@[VERSION]/dist/PDPlayerKit.js";
 
 const elm = new player({
-    /* Youtube 影片ID 或 其他影片來源 */
-    videoId: "UmR9zlez4OE"
-    src: "/img/sample.mp4",
-    /* 預設參數 */
-    volume: 100,    //預設音量
-    mute: false,    //預設靜音
-    /* 控制器 */
+    videoId: ""             // YouTube 視頻 ID
+    src: "/static/image/sample.mp4", // 影片連結（適用於 HTML5 影片）
+    volume: 100,            // 預設音量
+    mute: false,            // 預設靜音
     panel: [
         "play",     //播放鍵
         "timebar",  //進度條
