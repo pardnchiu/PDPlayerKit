@@ -48,7 +48,9 @@ This source code project is licensed under the [GPL-3.0](https://github.com/pard
 
 ## 下載 / Download
 
-`npm i pdplayerkit`
+```Shell
+npm i pdplayerkit
+```
 
 ## 如何使用 / How to use
 
