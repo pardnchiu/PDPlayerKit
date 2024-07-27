@@ -6,7 +6,8 @@
     "scripts": {
         "minify": "npx terser src/PDPlayerKit.js -c -m -o dist/PDPlayerKit.js --config-file terser.config.json --name-cache terser.cache.json",
         "minify-w": "chokidar 'src/PDPlayerKit.js' -c 'npm run minify'",
-        "sass": "sass sass/:css/ -w --style compressed --no-source-map"
+        "sass": "sass src/PDPlayerKit.sass:dist/PDPlayerKit.css -w --style compressed --no-source-map",
+        "sass-index": "sass static/sass/:static/css/ -w --style compressed --no-source-map"
     },
     "files": [
         "dist",
