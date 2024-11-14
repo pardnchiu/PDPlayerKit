@@ -1,10 +1,3 @@
-<!-- 
-
-  Copyright 2023 Pardn Ltd 帕登國際有限公司.
-  Created by Pardn Chiu 邱敬幃.
-  Email: mail@pardn.ltd
-  
- -->
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 
@@ -51,76 +44,329 @@
 
         <!-- Preload and Preconnect -->
         <link rel="preconnect" href="https://cdn.jsdelivr.net">
-        <link rel="preload" href="https://cdn.jsdelivr.net/gh/pardnchiu/PDExtension-js@latest/js/PDExtension.min.js" as="script" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/gh/pardnchiu/PDExtension-js@latest/js/PDExtension.min.js" copyright="Pardn Ltd"></script>
 
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/pdquickui@0.5.4/dist/PDQuickUI.js" as="script" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/pdquickui@0.5.4/dist/PDQuickUI.js"></script>
+
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/code-prettify@0.1.0/loader/run_prettify.min.js" as="script" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/code-prettify@0.1.0/loader/run_prettify.min.js"></script>
+
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/code-prettify@0.1.0/styles/desert.min.css" as="style" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/code-prettify@0.1.0/styles/desert.min.css" rel="stylesheet">
+
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" as="style" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
         <!-- Local Resources -->
+        <link rel="stylesheet" href="./dist/PDPlayerKit.css">
         <link rel="stylesheet" href="./static/css/index.css">
+        
+        <script src="./dist/PDPlayerKit.js"></script>
     </head>
 
     <body id="page">
-        <div id="player"></div>
+
+        <header>
+            <section>
+                <h1><span class="material-symbols-outlined">subscriptions</span>PDPlayerKit</h1>
+                <h2>模組化影片/音訊播放器</h2>
+                <p>簡單易用，適合個人網站嵌入。</p>
+            </section>
+            <section id="header-video"></section>
+        </header>
+
         <section>
-            <button @click="show_sample">插入Sample影片</button>
-            <button @click="show_youtube">插入Youtube影片</button>
+            <h2>輕鬆嵌入到個人網站</h2>
+            <p>只需從 cdn.jsdelivr.net 引入核心源碼</p>
+            <code>https://cdn.jsdelivr.net/npm/pdplayerkit@1.0.0/dist/PDPlayerKit.min.js</code>
+            <p>使用 JavaScript 代碼添加播放器</p>
+            <pre class="prettyprint">
+                <code class="language-javascript">
+const dom = new PDPlayer({
+    // 選擇播放器風格，例如 "minimal" 或 "classic"
+    type: "[風格選擇]",
+
+    // 媒體來源設定：以下個選項中僅能選擇一項
+    video: "[影片位置]",
+    // audio: "[音訊位置]",
+    // vimeo: "[Vimeo ID]",
+    // youtube: "[YouTube ID]"
+
+    // 設定顯示的控制面板選項
+    panel: [
+        "play", "progress", "time", 
+        "volume", "volumeMini", "rate", "full"
+    ],      
+
+    // 播放設置           
+    volume: 100,
+    mute: false,
+
+    // 事件監聽
+    event: {
+        ready: function () {
+            console.log("播放器準備完成");
+        },
+        playing: function () {
+            console.log("播放中");
+        },
+        pause: function () {
+            console.log("暫停");
+        },
+        end: function () {
+            console.log("播放結束");
+        }
+    }
+});
+
+(...).appendChild(dom.body);
+                </code>
+            </pre>
         </section>
+
+        <section>
+            <section>
+                <h2>多種不同風格的面板做選擇</h2>
+                <p>提供多種預設面板風格，方便快速使用<br>風格與按鈕皆可自訂</p>
+                <section id="demo-style" class="button" data-selected="1">
+                    <button @click="showDemoStyle" data-index="0">Default</button>
+                    <button @click="showDemoStyle" data-index="1">Minimal</button>
+                    <button @click="showDemoStyle" data-index="2">Classic</button>
+                    <button @click="showDemoStyle" data-index="3">Retro</button>
+                    <button @click="showDemoStyle" data-index="4">Simple</button>
+                </section>
+                <form>
+                    <p style="width: 100%">可拖曳變換位置</p>
+                    <label draggable="true" @dragstart="dragStart" @dragend="dragEnd" @dragover="dragOver" @dragleave="dragLeave" @drop="drop" @change="change">
+                        <input type="checkbox" name="buttonItem" value="play" checked>play
+                    </label>
+                    <label draggable="true" @dragstart="dragStart" @dragend="dragEnd" @dragover="dragOver" @dragleave="dragLeave" @drop="drop" @change="change">
+                        <input type="checkbox" name="buttonItem" value="progress" checked>progress
+                    </label>
+                    <label draggable="true" @dragstart="dragStart" @dragend="dragEnd" @dragover="dragOver" @dragleave="dragLeave" @drop="drop" @change="change">
+                        <input type="checkbox" name="buttonItem" value="time" checked>time
+                    </label>
+                    <label draggable="true" @dragstart="dragStart" @dragend="dragEnd" @dragover="dragOver" @dragleave="dragLeave" @drop="drop" @change="change">
+                        <input type="checkbox" name="buttonItem" value="volume">volume
+                    </label>
+                    <label draggable="true" @dragstart="dragStart" @dragend="dragEnd" @dragover="dragOver" @dragleave="dragLeave" @drop="drop" @change="change">
+                        <input type="checkbox" name="buttonItem" value="volumeMini" checked>volumeMini
+                    </label>
+                    <label draggable="true" @dragstart="dragStart" @dragend="dragEnd" @dragover="dragOver" @dragleave="dragLeave" @drop="drop" @change="change">
+                        <input type="checkbox" name="buttonItem" value="rate" checked>rate
+                    </label>
+                    <label draggable="true" @dragstart="dragStart" @dragend="dragEnd" @dragover="dragOver" @dragleave="dragLeave" @drop="drop" @change="change">
+                        <input type="checkbox" name="buttonItem" value="full" checked>full
+                    </label>
+                </form>
+            </section>
+            <section>
+                <section id="sample-video"></section>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <section id="sample-youtube"></section>
+            </section>
+            <section>
+                <h2>支持 Vimeo / YouTube</h2>
+                <p>直接提供影片 ID 即可播放</p>
+                <section class="button" data-selected="0">
+                    <button @click="showDemoVimeo">Viemo</button>
+                    <button @click="showDemoYoutube">Youtube</button>
+                </section>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>音源播放支援</h2>
+                <p>適合嵌入背景音樂或播客</p>
+                <section id="demo-audio" class="button" data-selected="0">
+                    <button @click="showDemoAudio" data-index="0">Demo 1</button>
+                    <button @click="showDemoAudio" data-index="1">Demo 2</button>
+                    <button @click="showDemoAudio" data-index="2">Demo 3</button>
+                </section>
+            </section>
+            <section>
+                <section id="sample-audio"></section>
+            </section>
+        </section>
+
+        <footer>
+            <p>Developed by <strong>邱敬幃</strong></p>
+            <p><a href="https://github.com/pardnchiu/PDPlayerKit" target="_blank">PDPlayerKit on GitHub</a></p>
+            <p>&copy; 2024</p>
+        </footer>
+
         <script type="module">
-            import { player } from "./dist/PDPlayerKit.js";
+            // import { player as PDPlayer } from "./dist/PDPlayerKit.module.js";
+
+            let dragTarget;
+            const demoStyle = [
+                ["", "https://cdn.pixabay.com/video/2023/11/28/191159-889246512_tiny.mp4"],
+                ["minimal", "https://cdn.pixabay.com/video/2024/06/06/215484_tiny.mp4"],
+                ["classic", "https://cdn.pixabay.com/video/2023/10/22/186115-877653483_tiny.mp4"],
+                ["retro", "https://cdn.pixabay.com/video/2019/01/06/20495-310204614_tiny.mp4"],
+                ["simple", "https://cdn.pixabay.com/video/2020/09/16/50109-459915579_tiny.mp4"]
+            ];
+            const demoAudio = [
+                ["retro", "https://cdn.pixabay.com/download/audio/2024/09/16/audio_a10608d6cd.mp3?filename=creative-technology-showreel-241274.mp3"],
+                ["classic", "https://cdn.pixabay.com/download/audio/2024/10/21/audio_78251ef8e3.mp3?filename=beautiful-loop-253269.mp3"],
+                ["simple", "https://cdn.pixabay.com/download/audio/2024/04/12/audio_3118cb3f2a.mp3?filename=groovy-ambient-funk-201745.mp3"],
+            ];
 
             document.addEventListener("DOMContentLoaded", _ => {
 
-                const page = new $dom({
+                function getButtonItems() {
+                    return [...document.querySelectorAll("input[name='buttonItem']:checked")].map(e => e.value);
+                };
+
+                const page = new QUI({
                     id: "page",
                     event: {
-                        show_sample: _ => {
-                            const elm = new player({
-                                src: "./static/image/sample.mp4",
+                        change: e => {
+                            const index = +document.getElementById("demo-style").dataset.selected;
+                            const data = demoStyle[index];
+                            const dom = new PDPlayer({
+                                type: data[0],
+                                video: data[1],
                                 volume: 100,
                                 mute: false,
-                                panel: [
-                                    "play",       //播放鍵
-                                    "timebar",    //進度條
-                                    "time",       //進度時間
-                                    "mute",       //靜音鍵
-                                    "full",       //影片
-                                ],
-                                event: {
-                                    ready: function () {
-                                        console.log("ready");
-                                    },
-                                    playing: function () {
-                                        console.log("playing");
-                                    },
-                                    pause: function () {
-                                        console.log("pause");
-                                    },
-                                    end: function () {
-                                        console.log("end");
-                                    }
-                                }
+                                panel: getButtonItems()
                             });
-                            "player".$.__child([
-                                elm.body
-                            ]);
+                            document.getElementById("sample-video").innerHTML = ""
+                            document.getElementById("sample-video").appendChild(dom.body);
                         },
-                        show_youtube: _ => {
-                            const elm = new player({
-                                videoId: "hvBHWOhPANk",
-                                live: false,
+                        dragStart: e => {
+                            dragTarget = e.target;
+                            setTimeout(() => {
+                                dragTarget.style.opacity = "0.5";
+                            }, 0);
+                        },
+                        dragEnd: e => {
+                            setTimeout(() => {
+                                dragTarget.style.opacity = "1";
+                                dragTarget = null;
+                            }, 0);
+                        },
+                        dragOver: e => {
+                            e.preventDefault();
+
+                            if (e.target === dragTarget) {
+                                return;
+                            }
+
+                            e.target.style.color = "red";
+                        },
+                        dragLeave: e => {
+                            e.target.style.color = "#000";
+                        },
+                        drop: e => {
+                            e.preventDefault();
+
+                            if (dragTarget !== e.target) {
+                                // 將被拖曳的項目插入到放置項目之前
+                                let allItems = [...dragTarget.parentElement.children];
+                                let droppedIndex = allItems.indexOf(e.target);
+                                let draggedIndex = allItems.indexOf(dragTarget);
+
+                                e.target.style.color = "#000";
+
+                                if (draggedIndex > droppedIndex) {
+                                    console.log(dragTarget, e.target)
+                                    dragTarget.parentElement.insertBefore(dragTarget, e.target);
+                                }
+                                else {
+                                    dragTarget.parentElement.insertBefore(dragTarget, e.target.nextElementSibling);
+                                };
+
+                                page.event.change();
+                            }
+                        },
+                        showDemoStyle: e => {
+                            const _this = e.target;
+                            const index = +_this.dataset.index;
+                            const data = demoStyle[index];
+                            const dom = new PDPlayer({
+                                type: data[0],
+                                video: data[1],
                                 volume: 100,
                                 mute: false,
-                                panel: [
-                                    "play",       //播放鍵
-                                    "timebar",    //進度條
-                                    "time",       //進度時間
-                                    "volume",     //音量鍵
-                                    "rate",       //速率鍵
-                                    "full",       //影片
-                                ]
+                                panel: getButtonItems()
                             });
-                            "player".$.__child([
-                                elm.body
-                            ]);
+                            document.getElementById("sample-video").innerHTML = ""
+                            document.getElementById("sample-video").appendChild(dom.body);
+
+                            _this.parentElement.dataset.selected = index;
+                        },
+                        showDemoAudio: e => {
+                            const _this = e.target;
+                            const index = +_this.dataset.index;
+                            const data = demoAudio[index];
+                            const dom = new PDPlayer({
+                                type: data[0],
+                                audio: data[1],
+                                volume: 100,
+                                mute: false,
+                                panel: getButtonItems()
+                            });
+                            document.getElementById("sample-audio").innerHTML = ""
+                            document.getElementById("sample-audio").appendChild(dom.body);
+
+                            _this.parentElement.dataset.selected = index;
+                        },
+                        showDemoYoutube: e => {
+                            const dom = new PDPlayer({
+                                type: "minimal",
+                                youtube: "O5O3yK8DJCc",
+                                volume: 100,
+                                mute: false,
+                                panel: getButtonItems()
+                            });
+                            document.getElementById("sample-youtube").innerHTML = "";
+                            document.getElementById("sample-youtube").appendChild(dom.body);
+
+                            if (e != null) {
+                                e.target.parentElement.dataset.selected = 1;
+                            };
+                        },
+                        showDemoVimeo: e => {
+                            const dom = new PDPlayer({
+                                type: "minimal",
+                                vimeo: "458695734",
+                                volume: 100,
+                                mute: false,
+                                panel: getButtonItems()
+                            });
+                            document.getElementById("sample-youtube").innerHTML = "";
+                            document.getElementById("sample-youtube").appendChild(dom.body);
+
+                            if (e != null) {
+                                e.target.parentElement.dataset.selected = 0;
+                            };
+                        }
+                    },
+                    when: {
+                        rendered: _ => {
+                            const dom = new PDPlayer({
+                                type: "",
+                                video: "https://cdn.pixabay.com/video/2024/06/02/214940_tiny.mp4",
+                                volume: 100,
+                                mute: false,
+                                panel: getButtonItems()
+                            });
+                            document.getElementById("header-video").appendChild(dom.body)
+                            document.getElementById("demo-style").children[1].click()
+                            document.getElementById("demo-audio").children[0].click()
+
+                            setTimeout(() => {
+                                page.event.showDemoVimeo();
+                            }, 1000);
                         }
                     }
                 });

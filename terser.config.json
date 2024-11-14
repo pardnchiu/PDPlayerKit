@@ -4,12 +4,12 @@
     "keep_classnames": false,
     "keep_fnames": false,
     "ie8": false,
-    "module": false,
     "nameCache": {},
     "safari10": false,
     "toplevel": true,
     "mangle": {
         "properties": {
+            "keep_quoted": false,
             "regex": ".*"
         }
     },
@@ -35,6 +35,8 @@
         "pure_funcs": null,
         "negate_iife": true,
         "drop_console": false,
-        "passes": 2
-    }
+        "passes": 3
+    },
+    "module": false,
+    "wrap": "window"
 }

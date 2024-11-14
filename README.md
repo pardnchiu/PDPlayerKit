@@ -1,104 +1,96 @@
 # PDPlayerKit (JavaScript Library)
 
-> PDPlayerKit 是一個輕量級的 JavaScript 播放器庫，提供嵌入式的 HTML5 影片播放器和 YouTube 播放器，具備高度自定義的控制面板和視覺效果。<br>
-> PDPlayerKit is a lightweight JavaScript library that provides embedded HTML5 video players and YouTube players, featuring highly customizable control panels and visual effects.
+> PDPlayerKit 是一個模組化的 JavaScript 播放器，支持嵌入式 HTML5、YouTube 和 Vimeo 播放器，具備高度自定義的控制面板、風格主題，並支援多媒體格式。
 
-![](https://img.shields.io/github/v/release/pardnchiu/PDPlayerKit?color=red) ![](https://img.shields.io/github/size/pardnchiu/PDPlayerKit/dist%2FPDPlayerKit.js?color=green) ![](https://img.shields.io/github/license/pardnchiu/PDPlayerKit?color=blue) ![](https://img.shields.io/badge/creator-Pardn%20Chiu%20邱敬幃-A374BF) 
+![](https://img.shields.io/badge/tag-JavaScript%20Library-bb4444) ![](https://img.shields.io/github/license/pardnchiu/PDPlayerKit?color=44bb44) ![](https://img.shields.io/badge/creator-邱敬幃-4444bb)<br>
+[![](https://img.shields.io/github/v/release/pardnchiu/PDPlayerKit?color=bbbb44)](https://github.com/pardnchiu/PDPlayerKit) [![](https://img.shields.io/npm/v/pdplayerkit?color=44bbbb)](https://www.npmjs.com/package/pdplayerkit) ![](https://img.shields.io/github/size/pardnchiu/PDPlayerKit/dist/PDPlayerKit.js?color=bb44bb)
 
-## 特點 / Feature
+## 特點
 
-- 支援 HTML5 視頻和 YouTube 視頻播放，<br>
-    Supports HTML5 video and YouTube video playback. 
+- 多媒體支持：支持 HTML5 影片、YouTube 和 Vimeo 播放，音訊播放功能也已新增。
+- 自定義控制面板：包括播放、暫停、音量調節、播放速率調整等功能，並提供多種風格主題選擇。
+- 多風格主題：內建多種預設風格，使用者可依據需求自由切換（如 Minimal、Classic、Retro、Simple 等）。
+- 多種版本支持：提供 ESM 和普通版本，方便用於不同開發環境。
+- 無依賴：已排除 PDRenderKit 的依賴。
+- 授權從 GPL 3.0 改為 MIT
+- 使用 [Google Icons](https://fonts.google.com/icons) 圖示黨做按鈕。
+- 使用 [pixabay.com](https://pixabay.com/videos/) 影音資源做範例。
+- 可在 [此處](https://pardnchiu.github.io/PDPlayerKit) 預覽。
 
-- 自定義控制面板，包括播放、暫停、音量控制、播放速率調整等功能。<br>
-    Customizable control panel, including play, pause, volume control, playback speed adjustment, and more.
+## 安裝方式
 
-- 支援行動裝置 `playsinline` 的狀態下支援全螢幕播放。<br>
-    Supports fullscreen playback on mobile devices when `playsinline` is enabled. 
-  
-- 使用純 JavaScript / CSS 開發。<br>
-    Built using pure JavaScript and CSS.
-  
-- 使用 [PDExtension-js](https://github.com/pardnchiu/PDExtension-js) 進行渲染。<br>
-    Rendered using [PDExtension-js](https://github.com/pardnchiu/PDExtension-js).
-  
-- 使用 [Font Awesome 6](https://fontawesome.com/v6/search) 圖標。<br>
-    Use [Font Awesome 6](https://fontawesome.com/v6/search) icons.
-  
-- 使用 [iframe-api](https://www.youtube.com/iframe_api) 進行 Youtube 操作。<br>
-    YouTube operations are handled via the [iframe-api](https://www.youtube.com/iframe_api).
-  
-- 可在 [此處](https://pardnchiu.github.io/PDPlayerKit) 預覽。<br>
-    Preview available [Here](https://pardnchiu.github.io/PDPlayerKit).
+- **從 npm 安裝**
+    ```bash
+    npm i pdplayerkit
+    ```
 
-## 開發者 / Creator
+- **從 CDN 引入**
+    - **引入 `PDPlayerKit` 套件**
+        ```html
+        <script src="https://cdn.jsdelivr.net/npm/pdplayerkit@[VERSION]/dist/PDPlayerKit.js"></script>
+        ```
+    - **Module 版本**
+        ```javascript
+        import { player as PDPlayer } from "https://cdn.jsdelivr.net/npm/pdplayerkit@[VERSION]/dist/PDPlayerKit.module.js";
+        ```
 
-<a href="https://pardn.io">
-<img src=https://pardn.io/image/head-s.jpg align=left width=100 height=100>
-</a>
+## 使用方法
 
-### Pardn Chiu 邱敬幃
+- **初始化 `editor` 和 `viewer`**
+    ```Javascript
+    const dom = new PDPlayer({
+        // 選擇播放器風格，例如 "minimal" 或 "classic"
+        type: "[風格選擇]",
 
-[![](https://pardn.io/image/mail.svg)](mailto:mail@pardn.ltd) [![](https://skillicons.dev/icons?i=linkedin)](https://linkedin.com/in/pardnchiu) 
+        // 媒體來源設定：以下個選項中僅能選擇一項
+        video: "[影片位置]",
+        // audio: "[音訊位置]",
+        // vimeo: "[Vimeo ID]",
+        // youtube: "[YouTube ID]"
 
-## 授權 / License
+        // 設定顯示的控制面板選項
+        panel: [
+            "play", "progress", "time", 
+            "volume", "volumeMini", "rate", "full"
+        ],      
 
-此源代碼項目採用 [GPL-3.0](https://github.com/pardnchiu/PDPlayerKit/blob/main/LICENSE) 許可證授權。<br>
-This source code project is licensed under the [GPL-3.0](https://github.com/pardnchiu/PDPlayerKit/blob/main/LICENSE) license.
+        // 播放設置           
+        volume: 100,
+        mute: false,
 
-## 下載 / Download
-
-```Shell
-npm i pdplayerkit
-```
-
-## 如何使用 / How to use
-
-- 添加依賴 `PDExtension-js`
-```Html
-<script src="https://cdn.jsdelivr.net/gh/pardnchiu/PDExtension-js@[VERSION]/dist/PDExtension.min.js" copyright="Pardn Ltd"></script>
-```
-
-- 導入 `player`
-```Javascript
-import { player } from "https://cdn.jsdelivr.net/gh/pardnchiu/PDPlayerKit@[VERSION]/dist/PDPlayerKit.js";
-
-const elm = new player({
-    videoId: ""             // YouTube 視頻 ID
-    src: "/static/image/sample.mp4", // 影片連結（適用於 HTML5 影片）
-    volume: 100,            // 預設音量
-    mute: false,            // 預設靜音
-    panel: [
-        "play",     //播放鍵
-        "timebar",  //進度條
-        "time",     //進度時間
-        "mute",     //靜音鍵
-        "volume",   //音量鍵
-        "rate",     //速率鍵
-        "full",     //影片
-    ],
-    event: {
-        ready: function() {
-            console.log("ready");
-        },
-        playing: function() {
-            console.log("playing");
-        },
-        pause: function() {
-            console.log("pause");
-        },
-        end: function() {
-            console.log("end");
+        // 事件監聽
+        event: {
+            ready: function () {
+                console.log("播放器準備完成");
+            },
+            playing: function () {
+                console.log("播放中");
+            },
+            pause: function () {
+                console.log("暫停");
+            },
+            end: function () {
+                console.log("播放結束");
+            }
         }
-    }
-});
+    });
 
-[DOM].appendChild(elm.body);
-```
+    (...).appendChild(dom.body);
+    ```
+
+
+## 開發者
+
+<img src="https://avatars.githubusercontent.com/u/25631760" align="left" width="96" height="96" style="margin-right: 0.5rem;" />
+
+<h4 style="padding-top: 0">邱敬幃 Pardn Chiu</h4>
+
+[![](https://pardn.io/image/mail.svg)](mailto:dev@pardn.io) [![](https://skillicons.dev/icons?i=linkedin)](https://linkedin.com/in/pardnchiu) 
+
+## 授權條款
+
+本專案依據 [MIT](https://github.com/pardnchiu/PDPlayerKit/blob/main/LICENSE) 授權使用。
+
 ***
 
-*翻譯皆靠 ChatGPT*
-
-***
-
-©️ 2023 [Pardn Chiu 邱敬幃](https://www.linkedin.com/in/pardnchiu)
+©️ 2023 [邱敬幃 Pardn Chiu](https://www.linkedin.com/in/pardnchiu)
