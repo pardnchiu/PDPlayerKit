@@ -31,7 +31,6 @@ body {
 
         @media screen and (min-width: 1024px) {
             flex-flow: row;
-            ;
             gap: 5rem;
         }
 
@@ -42,7 +41,7 @@ body {
             flex-flow: column;
             justify-content: center;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1rem;
 
             &:not(:has(video)):not(:has(iframe)):not(:has(audio)) {
                 flex-grow: 0;
@@ -88,8 +87,6 @@ body {
                     order: 2;
                 }
             }
-
-            ;
 
             >form {
                 margin-top: 1rem;
@@ -184,7 +181,6 @@ body {
         }
 
         p {
-            margin-top: 0.5rem;
             text-decoration: none;
             color: #000;
         }
@@ -271,7 +267,7 @@ body {
             flex-flow: column;
             justify-content: center;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1rem;
 
             &:not(:has(video)):not(:has(iframe)):not(:has(audio)) {
                 flex-grow: 0;
@@ -317,8 +313,6 @@ body {
                     order: 2;
                 }
             }
-
-            ;
 
             >form {
                 margin-top: 1rem;
@@ -416,7 +410,6 @@ body {
         }
 
         p {
-            margin-top: 0.5rem;
             text-decoration: none;
             color: #000;
         }
