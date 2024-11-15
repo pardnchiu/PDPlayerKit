@@ -2,36 +2,32 @@
 <html lang="zh-Hant-TW">
 
     <head>
+        <!-- 基本設定 -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
         <meta name="theme-color" content="#ffffff">
         <meta name="robots" content="index, follow">
-
-        <title>PDPlayerKit | 邱敬幃 Pardn Chiu | GitHub.io</title>
-        <meta name="title" content="PDPlayerKit | 邱敬幃 Pardn Chiu | GitHub.io">
-        <meta name="description" content="(JavaScript Library) A pure JavaScript-based PDPlayerKit, supporting YouTube and general video links, with play, pause, volume adjustment, and fullscreen capabilities. Developed by 邱敬幃 Pardn Chiu.">
         <meta name="author" content="邱敬幃 Pardn Chiu">
+
+        <!-- 網站資訊 -->
+        <title>PDPlayerKit | 邱敬幃 Pardn Chiu | GitHub.io</title>
+        <meta name="description" content="(JavaScript Library) A pure JavaScript-based PDPlayerKit, supporting YouTube and general video links, with play, pause, volume adjustment, and fullscreen capabilities. Developed by 邱敬幃 Pardn Chiu.">
         <link rel="author" href="https://pardnchiu.github.io">
         <link rel="canonical" href="https://pardnchiu.github.io/PDPlayerKit/">
 
-        <!-- Open Graph / Facebook -->
+        <!-- Open Graph / Social Media -->
         <meta property="og:title" content="PDPlayerKit | 邱敬幃 Pardn Chiu | GitHub.io">
-        <meta property="og:description" content="(JavaScript Library) A pure JavaScript-based PDPlayerKit, supporting YouTube and general video links, with play, pause, volume adjustment, and fullscreen capabilities. Developed by 邱敬幃 Pardn Chiu.">
+        <meta property="og:description" content="A pure JavaScript-based PDPlayerKit, supporting YouTube and general video links, with play, pause, volume adjustment, and fullscreen capabilities.">
         <meta property="og:image" content="https://opengraph.githubassets.com/1/pardnchiu/PDPlayerKit">
         <meta property="og:url" content="https://pardnchiu.github.io/PDPlayerKit/">
         <meta property="og:site_name" content="邱敬幃 Pardn Chiu 的 Github Page">
         <meta property="og:type" content="website">
-
-        <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image">
         <meta property="twitter:title" content="PDPlayerKit | 邱敬幃 Pardn Chiu | GitHub.io">
-        <meta property="twitter:description" content="(JavaScript Library) A pure JavaScript-based PDPlayerKit, supporting YouTube and general video links, with play, pause, volume adjustment, and fullscreen capabilities. Developed by 邱敬幃 Pardn Chiu.">
+        <meta property="twitter:description" content="A pure JavaScript-based PDPlayerKit, supporting YouTube and general video links, with play, pause, volume adjustment, and fullscreen capabilities.">
         <meta property="twitter:image" content="https://opengraph.githubassets.com/1/pardnchiu/PDPlayerKit">
         <meta property="twitter:url" content="https://pardnchiu.github.io/PDPlayerKit/">
-
-        <!-- Google Verification -->
-        <meta name="google-site-verification" content="YQQ2f6AchR8dcb55Az2BYd_mw4TrP0J1RApD-v2v65Y">
 
         <!-- Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-L5VYEZPVXX"></script>
@@ -44,26 +40,24 @@
 
         <!-- Preload and Preconnect -->
         <link rel="preconnect" href="https://cdn.jsdelivr.net">
-
-        <link rel="preload" href="https://cdn.jsdelivr.net/npm/pdquickui@0.5.4/dist/PDQuickUI.js" as="script" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/pdquickui@0.5.4/dist/PDQuickUI.js"></script>
-
-        <link rel="preload" href="https://cdn.jsdelivr.net/npm/code-prettify@0.1.0/loader/run_prettify.min.js" as="script" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/code-prettify@0.1.0/loader/run_prettify.min.js"></script>
-
-        <link rel="preload" href="https://cdn.jsdelivr.net/npm/code-prettify@0.1.0/styles/desert.min.css" as="style" crossorigin="anonymous">
-        <link href="https://cdn.jsdelivr.net/npm/code-prettify@0.1.0/styles/desert.min.css" rel="stylesheet">
-
-
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+        <!-- 外部資源 -->
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/pdquickui@0.5.4/dist/PDQuickUI.js" as="script" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/pdquickui@0.5.4/dist/PDQuickUI.js"></script>
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/code-prettify@0.1.0/loader/run_prettify.min.js" as="script" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/code-prettify@0.1.0/loader/run_prettify.min.js"></script>
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/code-prettify@0.1.0/styles/desert.min.css" as="style" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/code-prettify@0.1.0/styles/desert.min.css" rel="stylesheet">
+
+        <!-- 字體 -->
         <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" as="style" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-        <!-- Local Resources -->
+
+        <!-- 本地資源 -->
         <link rel="stylesheet" href="./dist/PDPlayerKit.css">
         <link rel="stylesheet" href="./static/css/index.css">
-        
         <script src="./dist/PDPlayerKit.js"></script>
     </head>
 
@@ -75,13 +69,16 @@
                 <h2>模組化影片/音訊播放器</h2>
                 <p>簡單易用，適合個人網站嵌入。</p>
             </section>
-            <section id="header-video"></section>
+            <section>
+                <section id="header-video"></section>
+                <p>Source: <a href="https://pixabay.com/videos/temple-pond-garden-kinkakuji-temple-214940/" target="_blank">pixabay (Kanenori)</a></p>
+            </section>
         </header>
 
         <section>
             <h2>輕鬆嵌入到個人網站</h2>
             <p>只需從 cdn.jsdelivr.net 引入核心源碼</p>
-            <code>https://cdn.jsdelivr.net/npm/pdplayerkit@1.0.0/dist/PDPlayerKit.min.js</code>
+            <code>https://cdn.jsdelivr.net/npm/pdplayerkit@latest/dist/PDPlayerKit.js</code>
             <p>使用 JavaScript 代碼添加播放器</p>
             <pre class="prettyprint">
                 <code class="language-javascript">
@@ -161,16 +158,25 @@ const dom = new PDPlayer({
                     <label draggable="true" @dragstart="dragStart" @dragend="dragEnd" @dragover="dragOver" @dragleave="dragLeave" @drop="drop" @change="change">
                         <input type="checkbox" name="buttonItem" value="full" checked>full
                     </label>
+                    <hr>
+                    <button type="button" @click="copyDemoStyle">
+                        <span class="material-symbols-outlined">
+                            content_copy
+                        </span>
+                        複製代碼
+                    </button>
                 </form>
             </section>
             <section>
                 <section id="sample-video"></section>
+                <p id="sample-video-hint"></p>
             </section>
         </section>
 
         <section>
             <section>
                 <section id="sample-youtube"></section>
+                <p id="sample-youtube-hint"></p>
             </section>
             <section>
                 <h2>支持 Vimeo / YouTube</h2>
@@ -194,11 +200,12 @@ const dom = new PDPlayer({
             </section>
             <section>
                 <section id="sample-audio"></section>
+                <p id="sample-audio-hint"></p>
             </section>
         </section>
 
         <footer>
-            <p>Developed by <strong>邱敬幃</strong></p>
+            <p>Created by <a href="https://github.com/pardnchiu" target="_blank">邱敬幃</a></p>
             <p><a href="https://github.com/pardnchiu/PDPlayerKit" target="_blank">PDPlayerKit on GitHub</a></p>
             <p>&copy; 2024</p>
         </footer>
@@ -206,18 +213,18 @@ const dom = new PDPlayer({
         <script type="module">
             // import { player as PDPlayer } from "./dist/PDPlayerKit.module.js";
 
-            let dragTarget;
+            let dragTarget, demoVideoCode, copyTimer;
             const demoStyle = [
-                ["", "https://cdn.pixabay.com/video/2023/11/28/191159-889246512_tiny.mp4"],
-                ["minimal", "https://cdn.pixabay.com/video/2024/06/06/215484_tiny.mp4"],
-                ["classic", "https://cdn.pixabay.com/video/2023/10/22/186115-877653483_tiny.mp4"],
-                ["retro", "https://cdn.pixabay.com/video/2019/01/06/20495-310204614_tiny.mp4"],
-                ["simple", "https://cdn.pixabay.com/video/2020/09/16/50109-459915579_tiny.mp4"]
+                ["", "https://cdn.pixabay.com/video/2023/11/28/191159-889246512_tiny.mp4", "https://pixabay.com/videos/gull-bird-snow-plumage-sitting-191159/", "NickyPe"],
+                ["minimal", "https://cdn.pixabay.com/video/2024/06/06/215484_tiny.mp4", "https://pixabay.com/videos/sea-waves-reflection-undulations-215484/", "xBriantcx"],
+                ["classic", "https://cdn.pixabay.com/video/2023/10/22/186115-877653483_tiny.mp4", "https://pixabay.com/videos/beach-sea-ocean-sand-drone-aerial-186115/", "Anewlifetraveling"],
+                ["retro", "https://cdn.pixabay.com/video/2019/01/06/20495-310204614_tiny.mp4", "https://pixabay.com/videos/pixel-bit-coin-game-video-vector-20495/", "Gam-Ol"],
+                ["simple", "https://cdn.pixabay.com/video/2020/09/16/50109-459915579_tiny.mp4", "https://pixabay.com/videos/tennis-match-sport-ball-game-50109/", "xat-ch"]
             ];
             const demoAudio = [
-                ["retro", "https://cdn.pixabay.com/download/audio/2024/09/16/audio_a10608d6cd.mp3?filename=creative-technology-showreel-241274.mp3"],
-                ["classic", "https://cdn.pixabay.com/download/audio/2024/10/21/audio_78251ef8e3.mp3?filename=beautiful-loop-253269.mp3"],
-                ["simple", "https://cdn.pixabay.com/download/audio/2024/04/12/audio_3118cb3f2a.mp3?filename=groovy-ambient-funk-201745.mp3"],
+                ["retro", "https://cdn.pixabay.com/download/audio/2024/09/16/audio_a10608d6cd.mp3?filename=creative-technology-showreel-241274.mp3", "https://pixabay.com/music/beats-creative-technology-showreel-241274/", "Pumpupthemind"],
+                ["classic", "https://cdn.pixabay.com/download/audio/2024/10/21/audio_78251ef8e3.mp3?filename=beautiful-loop-253269.mp3", "https://pixabay.com/music/beautiful-loop-253269/", "DaveJf"],
+                ["simple", "https://cdn.pixabay.com/download/audio/2024/04/12/audio_3118cb3f2a.mp3?filename=groovy-ambient-funk-201745.mp3", "https://pixabay.com/music/groovy-ambient-funk-201745/", "moodmode"],
             ];
 
             document.addEventListener("DOMContentLoaded", _ => {
@@ -225,6 +232,19 @@ const dom = new PDPlayer({
                 function getButtonItems() {
                     return [...document.querySelectorAll("input[name='buttonItem']:checked")].map(e => e.value);
                 };
+
+                function demoStyleCode(data) {
+                    return `\<script src="https://cdn.jsdelivr.net/npm/pdplayerkit@latest/dist/PDPlayerKit.js"\>\</script\>
+\<script\>
+const dom = new PDPlayer({
+    type: "${data[0]}",
+    video: "${data[1]}",
+    volume: 100,
+    mute: false,
+    panel: ${JSON.stringify(getButtonItems())}
+});
+\</script\>`;
+                }
 
                 const page = new QUI({
                     id: "page",
@@ -239,6 +259,7 @@ const dom = new PDPlayer({
                                 mute: false,
                                 panel: getButtonItems()
                             });
+
                             document.getElementById("sample-video").innerHTML = ""
                             document.getElementById("sample-video").appendChild(dom.body);
                         },
@@ -301,8 +322,28 @@ const dom = new PDPlayer({
                             });
                             document.getElementById("sample-video").innerHTML = ""
                             document.getElementById("sample-video").appendChild(dom.body);
+                            document.getElementById("sample-video-hint").innerHTML = `Source: <a href="${data[2]}" target="_blank">pixabay (${data[3]})</a>`;
 
                             _this.parentElement.dataset.selected = index;
+                        },
+                        copyDemoStyle: e => {
+                            const _this = e.target;
+                            const index = +document.getElementById("demo-style").dataset.selected;
+                            const data = demoStyle[index];
+
+                            clearTimeout(copyTimer);
+                            
+                            try {
+                                navigator.clipboard.writeText(demoStyleCode(data));
+
+                                _this.innerHTML = _this.innerHTML.replace(/複製代碼/, "已複製");
+                                copyTimer = setTimeout(() => {
+                                    _this.innerHTML = _this.innerHTML.replace(/已複製/, "複製代碼");
+                                }, 500);
+                            }
+                            catch (err) {
+                                alert(err);
+                            };
                         },
                         showDemoAudio: e => {
                             const _this = e.target;
@@ -317,6 +358,7 @@ const dom = new PDPlayer({
                             });
                             document.getElementById("sample-audio").innerHTML = ""
                             document.getElementById("sample-audio").appendChild(dom.body);
+                            document.getElementById("sample-audio-hint").innerHTML = `Source: <a href="${data[2]}" target="_blank">pixabay (${data[3]})</a>`;
 
                             _this.parentElement.dataset.selected = index;
                         },
@@ -330,6 +372,7 @@ const dom = new PDPlayer({
                             });
                             document.getElementById("sample-youtube").innerHTML = "";
                             document.getElementById("sample-youtube").appendChild(dom.body);
+                            document.getElementById("sample-youtube-hint").innerHTML = `Source: <a href="https://www.youtube.com/watch?v=O5O3yK8DJCc" target="_blank">youtube (Sony)</a>`;
 
                             if (e != null) {
                                 e.target.parentElement.dataset.selected = 1;
@@ -345,6 +388,7 @@ const dom = new PDPlayer({
                             });
                             document.getElementById("sample-youtube").innerHTML = "";
                             document.getElementById("sample-youtube").appendChild(dom.body);
+                            document.getElementById("sample-youtube-hint").innerHTML = `Source: <a href="https://vimeo.com/458695734" target="_blank">vimeo (UAS Flight Ops)</a>`;
 
                             if (e != null) {
                                 e.target.parentElement.dataset.selected = 0;
@@ -356,6 +400,7 @@ const dom = new PDPlayer({
                             const dom = new PDPlayer({
                                 type: "",
                                 video: "https://cdn.pixabay.com/video/2024/06/02/214940_tiny.mp4",
+                                // 
                                 volume: 100,
                                 mute: false,
                                 panel: getButtonItems()
