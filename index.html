@@ -70,7 +70,9 @@
                 <p>簡單易用，適合個人網站嵌入。</p>
             </section>
             <section>
-                <section id="header-video"></section>
+                <section>
+                    <div id="header-video"></div>
+                </section>
                 <p>Source: <a href="https://pixabay.com/videos/temple-pond-garden-kinkakuji-temple-214940/" target="_blank">pixabay (Kanenori)</a></p>
             </section>
         </header>
@@ -83,27 +85,34 @@
             <pre class="prettyprint">
                 <code class="language-javascript">
 const dom = new PDPlayer({
-    // 選擇播放器風格，例如 "minimal" 或 "classic"
-    type: "[風格選擇]",
+    // 選填：指定元件替換為播放器（元件的 ID）
+    // 若未指定，需手動將 dom.body 加入至視圖中
+    // id: "元件 ID",
 
-    // 媒體來源設定：以下個選項中僅能選擇一項
+    // 必填：媒體來源設定，以下選項中僅能選擇一項
     video: "[影片位置]",
     // audio: "[音訊位置]",
     // vimeo: "[Vimeo ID]",
     // youtube: "[YouTube ID]"
 
-    // 設定顯示的控制面板選項
-    panel: [
-        "play", "progress", "time", 
-        "volume", "volumeMini", "rate", "full"
-    ],      
+    // 選填：播放設置
+    option: {
+        // 控制面板外觀風格，例如 "minimal" 或 "classic"
+        panelType: "[風格選擇]",
 
-    // 播放設置           
-    volume: 100,
-    mute: false,
+        // 控制面板按鈕，依需求選擇顯示的功能
+        panel: [
+            "play", "progress", "time", "timeMini", 
+            "volume", "volumeMini", "rate", "full"
+        ],
+        // 播放器預設音量
+        volume: 100,
+        // 播放器預設靜音
+        mute: false
+    },
 
-    // 事件監聽
-    event: {
+    // 選填：事件監聽器，可監聽播放過程中的特定事件
+    when: {
         ready: function () {
             console.log("播放器準備完成");
         },
@@ -115,11 +124,29 @@ const dom = new PDPlayer({
         },
         end: function () {
             console.log("播放結束");
+        },
+        destroyed: function () {
+            console.log("已移除");
         }
     }
 });
 
+// 若無指定元件，需手動將播放器加入至 DOM 中
 (...).appendChild(dom.body);
+
+// 更換內容影片
+// dom.replace({
+    // 必填：媒體來源設定，以下選項中僅能選擇一項
+    // video: "[影片位置]",
+    // audio: "[音訊位置]",
+    // vimeo: "[Vimeo ID]",
+    // youtube: "[YouTube ID]"
+    // option: {[播放設置]},
+    // when: {[事件監聽]}
+// })
+
+// 移除元件
+// dom.destory();
                 </code>
             </pre>
         </section>
@@ -145,6 +172,9 @@ const dom = new PDPlayer({
                     </label>
                     <label draggable="true" @dragstart="dragStart" @dragend="dragEnd" @dragover="dragOver" @dragleave="dragLeave" @drop="drop" @change="change">
                         <input type="checkbox" name="buttonItem" value="time" checked>time
+                    </label>
+                    <label draggable="true" @dragstart="dragStart" @dragend="dragEnd" @dragover="dragOver" @dragleave="dragLeave" @drop="drop" @change="change">
+                        <input type="checkbox" name="buttonItem" value="timeMini">timeMini
                     </label>
                     <label draggable="true" @dragstart="dragStart" @dragend="dragEnd" @dragover="dragOver" @dragleave="dragLeave" @drop="drop" @change="change">
                         <input type="checkbox" name="buttonItem" value="volume">volume
@@ -213,7 +243,7 @@ const dom = new PDPlayer({
         <script type="module">
             // import { player as PDPlayer } from "./dist/PDPlayerKit.module.js";
 
-            let dragTarget, demoVideoCode, copyTimer;
+            let dragTarget, demoVideoCode, copyTimer, demoStylePlayer, demoVimeoPlayer, demoYoutubePlayer;
             const demoStyle = [
                 ["", "https://cdn.pixabay.com/video/2023/11/28/191159-889246512_tiny.mp4", "https://pixabay.com/videos/gull-bird-snow-plumage-sitting-191159/", "NickyPe"],
                 ["minimal", "https://cdn.pixabay.com/video/2024/06/06/215484_tiny.mp4", "https://pixabay.com/videos/sea-waves-reflection-undulations-215484/", "xBriantcx"],
@@ -237,11 +267,13 @@ const dom = new PDPlayer({
                     return `\<script src="https://cdn.jsdelivr.net/npm/pdplayerkit@latest/dist/PDPlayerKit.js"\>\</script\>
 \<script\>
 const dom = new PDPlayer({
-    type: "${data[0]}",
     video: "${data[1]}",
-    volume: 100,
-    mute: false,
-    panel: ${JSON.stringify(getButtonItems())}
+    option: {
+        panelType: "${data[0]}",
+        panelItem: ${JSON.stringify(getButtonItems())},
+        volume: 100,
+        mute: false
+    }
 });
 \</script\>`;
                 }
@@ -313,15 +345,20 @@ const dom = new PDPlayer({
                             const _this = e.target;
                             const index = +_this.dataset.index;
                             const data = demoStyle[index];
-                            const dom = new PDPlayer({
-                                type: data[0],
+
+                            if (demoStylePlayer != null) {
+                                demoStylePlayer.destroy();
+                            };
+
+                            demoStylePlayer = new PDPlayer({
                                 video: data[1],
-                                volume: 100,
-                                mute: false,
-                                panel: getButtonItems()
+                                option: {
+                                    panelType: data[0],
+                                    panelItem: getButtonItems(),
+                                }
                             });
                             document.getElementById("sample-video").innerHTML = ""
-                            document.getElementById("sample-video").appendChild(dom.body);
+                            document.getElementById("sample-video").appendChild(demoStylePlayer.body);
                             document.getElementById("sample-video-hint").innerHTML = `Source: <a href="${data[2]}" target="_blank">pixabay (${data[3]})</a>`;
 
                             _this.parentElement.dataset.selected = index;
@@ -350,11 +387,10 @@ const dom = new PDPlayer({
                             const index = +_this.dataset.index;
                             const data = demoAudio[index];
                             const dom = new PDPlayer({
-                                type: data[0],
                                 audio: data[1],
-                                volume: 100,
-                                mute: false,
-                                panel: getButtonItems()
+                                option: {
+                                    panelType: data[0],
+                                }
                             });
                             document.getElementById("sample-audio").innerHTML = ""
                             document.getElementById("sample-audio").appendChild(dom.body);
@@ -363,15 +399,22 @@ const dom = new PDPlayer({
                             _this.parentElement.dataset.selected = index;
                         },
                         showDemoYoutube: e => {
-                            const dom = new PDPlayer({
-                                type: "minimal",
+                            // if (demoYoutubePlayer != null) {
+                            //     return;
+                            // };
+                            // if (demoVimeoPlayer != null) {
+                            //     demoVimeoPlayer.destroy()
+                            //     demoVimeoPlayer = null;
+                            // };
+
+                            demoYoutubePlayer = new PDPlayer({
                                 youtube: "O5O3yK8DJCc",
-                                volume: 100,
-                                mute: false,
-                                panel: getButtonItems()
+                                option: {
+                                    panelType: "minimal",
+                                }
                             });
                             document.getElementById("sample-youtube").innerHTML = "";
-                            document.getElementById("sample-youtube").appendChild(dom.body);
+                            document.getElementById("sample-youtube").appendChild(demoYoutubePlayer.body);
                             document.getElementById("sample-youtube-hint").innerHTML = `Source: <a href="https://www.youtube.com/watch?v=O5O3yK8DJCc" target="_blank">youtube (Sony)</a>`;
 
                             if (e != null) {
@@ -379,15 +422,22 @@ const dom = new PDPlayer({
                             };
                         },
                         showDemoVimeo: e => {
-                            const dom = new PDPlayer({
-                                type: "minimal",
+                            // if (demoVimeoPlayer != null) {
+                            //     return;
+                            // };
+                            // if (demoYoutubePlayer != null) {
+                            //     demoYoutubePlayer.destroy();
+                            //     demoYoutubePlayer = null;
+                            // };
+
+                            demoVimeoPlayer = new PDPlayer({
                                 vimeo: "458695734",
-                                volume: 100,
-                                mute: false,
-                                panel: getButtonItems()
+                                option: {
+                                    panelType: "minimal",
+                                }
                             });
                             document.getElementById("sample-youtube").innerHTML = "";
-                            document.getElementById("sample-youtube").appendChild(dom.body);
+                            document.getElementById("sample-youtube").appendChild(demoVimeoPlayer.body);
                             document.getElementById("sample-youtube-hint").innerHTML = `Source: <a href="https://vimeo.com/458695734" target="_blank">vimeo (UAS Flight Ops)</a>`;
 
                             if (e != null) {
@@ -398,14 +448,10 @@ const dom = new PDPlayer({
                     when: {
                         rendered: _ => {
                             const dom = new PDPlayer({
-                                type: "",
-                                video: "https://cdn.pixabay.com/video/2024/06/02/214940_tiny.mp4",
-                                // 
-                                volume: 100,
-                                mute: false,
-                                panel: getButtonItems()
+                                id: "header-video",
+                                video: "https://cdn.pixabay.com/video/2024/06/02/214940_tiny.mp4"
                             });
-                            document.getElementById("header-video").appendChild(dom.body)
+
                             document.getElementById("demo-style").children[1].click()
                             document.getElementById("demo-audio").children[0].click()
 

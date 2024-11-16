@@ -27,11 +27,11 @@
 - **從 CDN 引入**
     - **引入 `PDPlayerKit` 套件**
         ```html
-        <script src="https://cdn.jsdelivr.net/npm/pdplayerkit@[VERSION]/dist/PDPlayerKit.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/pdplayerkit@latest/dist/PDPlayerKit.js"></script>
         ```
     - **Module 版本**
         ```javascript
-        import { player as PDPlayer } from "https://cdn.jsdelivr.net/npm/pdplayerkit@[VERSION]/dist/PDPlayerKit.module.js";
+        import { player as PDPlayer } from "https://cdn.jsdelivr.net/npm/pdplayerkit@latest/dist/PDPlayerKit.module.js";
         ```
 
 ## 使用方法
@@ -39,27 +39,34 @@
 - **初始化 `editor` 和 `viewer`**
     ```Javascript
     const dom = new PDPlayer({
-        // 選擇播放器風格，例如 "minimal" 或 "classic"
-        type: "[風格選擇]",
+        // 選填：指定元件替換為播放器（元件的 ID）
+        // 若未指定，需手動將 dom.body 加入至視圖中
+        // id: "元件 ID",
 
-        // 媒體來源設定：以下個選項中僅能選擇一項
+        // 必填：媒體來源設定，以下選項中僅能選擇一項
         video: "[影片位置]",
         // audio: "[音訊位置]",
         // vimeo: "[Vimeo ID]",
         // youtube: "[YouTube ID]"
 
-        // 設定顯示的控制面板選項
-        panel: [
-            "play", "progress", "time", 
-            "volume", "volumeMini", "rate", "full"
-        ],      
+        // 選填：播放設置
+        option: {
+            // 控制面板外觀風格，例如 "minimal" 或 "classic"
+            panelType: "[風格選擇]",
 
-        // 播放設置           
-        volume: 100,
-        mute: false,
+            // 控制面板按鈕，依需求選擇顯示的功能
+            panel: [
+                "play", "progress", "time", "timeMini", 
+                "volume", "volumeMini", "rate", "full"
+            ],
+            // 播放器預設音量
+            volume: 100,
+            // 播放器預設靜音
+            mute: false
+        },
 
-        // 事件監聽
-        event: {
+        // 選填：事件監聽器，可監聽播放過程中的特定事件
+        when: {
             ready: function () {
                 console.log("播放器準備完成");
             },
@@ -71,11 +78,29 @@
             },
             end: function () {
                 console.log("播放結束");
+            },
+            destroyed: function () {
+                console.log("已移除");
             }
         }
     });
 
+    // 若無指定元件，需手動將播放器加入至 DOM 中
     (...).appendChild(dom.body);
+
+    // 更換內容影片
+    // dom.replace({
+        // 必填：媒體來源設定，以下選項中僅能選擇一項
+        // video: "[影片位置]",
+        // audio: "[音訊位置]",
+        // vimeo: "[Vimeo ID]",
+        // youtube: "[YouTube ID]"
+        // option: {[播放設置]},
+        // when: {[事件監聽]}
+    // })
+
+    // 移除元件
+    // dom.destory();
     ```
 
 
