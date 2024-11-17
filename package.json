@@ -1,6 +1,6 @@
 {
     "name": "pdplayerkit",
-    "version": "2.1.1",
+    "version": "2.2.0",
     "description": "PDPlayerKit is a lightweight JavaScript library that provides embedded HTML5 video players and YouTube players, featuring highly customizable control panels and visual effects.",
     "main": "dist/PDPlayerKit.js",
     "scripts": {

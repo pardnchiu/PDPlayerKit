@@ -43,6 +43,7 @@
         // 若未指定，需手動將 dom.body 加入至視圖中
         // id: "元件 ID",
 
+
         // 必填：媒體來源設定，以下選項中僅能選擇一項
         video: "[影片位置]",
         // audio: "[音訊位置]",
@@ -50,7 +51,10 @@
         // youtube: "[YouTube ID]"
 
         // 選填：播放設置
-        option: {
+        option: {   
+            // 是否顯示滑桿，預設 true
+            showThumb: true,
+
             // 控制面板外觀風格，例如 "minimal" 或 "classic"
             panelType: "[風格選擇]",
 

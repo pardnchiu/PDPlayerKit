@@ -97,6 +97,9 @@ const dom = new PDPlayer({
 
     // 選填：播放設置
     option: {
+        // 是否顯示滑桿，預設 true
+        showThumb: true,
+
         // 控制面板外觀風格，例如 "minimal" 或 "classic"
         panelType: "[風格選擇]",
 
@@ -438,7 +441,7 @@ const dom = new PDPlayer({
                         rendered: _ => {
                             const dom = new PDPlayer({
                                 id: "header-video",
-                                video: "https://cdn.pixabay.com/video/2024/06/02/214940_tiny.mp4"
+                                video: "https://cdn.pixabay.com/video/2024/06/02/214940_tiny.mp4",
                             });
 
                             document.getElementById("demo-style").children[1].click()
