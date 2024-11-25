@@ -1,41 +1,58 @@
 # PDPlayerKit (JavaScript Library)
 
-> PDPlayerKit 是一個模組化的 JavaScript 播放器，支持嵌入式 HTML5、YouTube 和 Vimeo 播放器，具備高度自定義的控制面板、風格主題，並支援多媒體格式。
+> 模組化 JavaScript 媒體播放器<br>
+> 支援 HTML5、YouTube、Vimeo，提供靈活主題與完整控制面板。
 
-![](https://img.shields.io/badge/tag-JavaScript%20Library-bb4444) ![](https://img.shields.io/github/license/pardnchiu/PDPlayerKit?color=44bb44) ![](https://img.shields.io/badge/creator-邱敬幃-4444bb)<br>
-[![](https://img.shields.io/github/v/release/pardnchiu/PDPlayerKit?color=bbbb44)](https://github.com/pardnchiu/PDPlayerKit) [![](https://img.shields.io/npm/v/pdplayerkit?color=44bbbb)](https://www.npmjs.com/package/pdplayerkit) ![](https://img.shields.io/github/size/pardnchiu/PDPlayerKit/dist/PDPlayerKit.js?color=bb44bb)
+![](https://img.shields.io/badge/tag-JavaScript%20Library-bb4444) 
+![](https://img.shields.io/github/size/pardnchiu/PDPlayerKit/dist%2FPDPlayerKit.js) 
+![](https://img.shields.io/github/license/pardnchiu/PDPlayerKit)<br>
+[![](https://img.shields.io/github/v/release/pardnchiu/PDPlayerKit)](https://github.com/pardnchiu/PDPlayerKit) 
+[![](https://img.shields.io/npm/v/pdplayerkit)](https://www.npmjs.com/package/pdplayerkit) 
+[![](https://img.shields.io/jsdelivr/npm/hw/pdplayerkit)](https://www.jsdelivr.com/package/npm/pdplayerkit)
 
 ## 特點
 
-- 多媒體支持：支持 HTML5 影片、YouTube 和 Vimeo 播放，音訊播放功能也已新增。
-- 自定義控制面板：包括播放、暫停、音量調節、播放速率調整等功能，並提供多種風格主題選擇。
-- 多風格主題：內建多種預設風格，使用者可依據需求自由切換（如 Minimal、Classic、Retro、Simple 等）。
-- 多種版本支持：提供 ESM 和普通版本，方便用於不同開發環境。
-- 無依賴：已排除 PDRenderKit 的依賴。
-- 授權從 GPL 3.0 改為 MIT
-- 使用 [Google Icons](https://fonts.google.com/icons) 圖示黨做按鈕。
-- 使用 [pixabay.com](https://pixabay.com/videos/) 影音資源做範例。
-- 可在 [此處](https://pardnchiu.github.io/PDPlayerKit) 預覽。
+### 多媒體播放
+- 支援多類型：可播放 **HTML5 影片 / 音訊**、**YouTube** 與 **Vimeo**。
+- 兼容桌面與行動設備，支持 `playsinline` 和 **全螢幕模式** 切換。
+
+### 高度自定義控制面板
+- 自由定制按鈕：**播放速率調整**、**音量控制**、**進度條** 等功能按需配置。
+- 提供多種內建主題： (如 Minimal、Classic、Retro、Simple)，方便自由選擇。
+
+### 輕量與無依賴
+- 基於 **原生 API** 和 **YouTube / Vimeo API**，無需額外庫，開箱即用。
+- 完全移除 **PDRenderKit** 的依賴，減少耦合，提升使用便捷性。
+- 文件體積小於 數 KB，即使在行動設備上也能高效運行。
+
+### 全面的事件監聽
+- 支持多種事件監聽： (如 ready、playing、pause、end)，方便深度擴展。
+
+### 多版本支持
+- 提供 **ESM (ECMAScript Module)** 與 **一般版本**，適用於多種開發環境，靈活集成。
+
+### 更直觀的控制按鈕
+- 按鈕圖示使用 [Google Icons](https://fonts.google.com/icons)，清晰、現代，適配各類主題風格。
+
+### 友善授權
+- 授權從 **GPL 3.0** 調整為 **MIT**，方便自由使用與修改，適應更多商業或個人項目。
 
 ## 安裝方式
 
-- **從 npm 安裝**
-    ```bash
-    npm i pdplayerkit
+### 從 npm 安裝
+```bash
+npm i pdplayerkit
+```
+
+### 從 CDN 引入
+- **引入 `PDPlayerKit` 套件**
+    ```html
+    <script src="https://cdn.jsdelivr.net/npm/pdplayerkit@latest/dist/PDPlayerKit.js"></script>
     ```
-
-- **從 CDN 引入**
-    - **引入 `PDPlayerKit` 套件**
-        ```html
-        <script src="https://cdn.jsdelivr.net/npm/pdplayerkit@latest/dist/PDPlayerKit.js"></script>
-        ```
-    - **Module 版本**
-        ```javascript
-        import { player as PDPlayer } from "https://cdn.jsdelivr.net/npm/pdplayerkit@latest/dist/PDPlayerKit.module.js";
-        ```
-
-## 使用方法
-
+- **Module 版本**
+    ```javascript
+    import { player as PDPlayer } from "https://cdn.jsdelivr.net/npm/pdplayerkit@latest/dist/PDPlayerKit.module.js";
+    ```
 - **初始化 `editor` 和 `viewer`**
     ```Javascript
     const dom = new PDPlayer({
