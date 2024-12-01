@@ -11,23 +11,23 @@
         <meta name="author" content="邱敬幃 Pardn Chiu">
 
         <!-- 網站資訊 -->
-        <title>PDPlayerKit | 邱敬幃 Pardn Chiu | GitHub.io</title>
-        <meta name="description" content="(JavaScript Library) A pure JavaScript-based PDPlayerKit, supporting YouTube and general video links, with play, pause, volume adjustment, and fullscreen capabilities. Developed by 邱敬幃 Pardn Chiu.">
+        <title>FlexPlyr | 邱敬幃 Pardn Chiu | GitHub.io</title>
+        <meta name="description" content="(JavaScript Library) A pure JavaScript-based FlexPlyr, supporting YouTube and general video links, with play, pause, volume adjustment, and fullscreen capabilities. Developed by 邱敬幃 Pardn Chiu.">
         <link rel="author" href="https://pardnchiu.github.io">
-        <link rel="canonical" href="https://pardnchiu.github.io/PDPlayerKit/">
+        <link rel="canonical" href="https://pardnchiu.github.io/FlexPlyr/">
 
         <!-- Open Graph / Social Media -->
-        <meta property="og:title" content="PDPlayerKit | 邱敬幃 Pardn Chiu | GitHub.io">
-        <meta property="og:description" content="A pure JavaScript-based PDPlayerKit, supporting YouTube and general video links, with play, pause, volume adjustment, and fullscreen capabilities.">
-        <meta property="og:image" content="https://opengraph.githubassets.com/1/pardnchiu/PDPlayerKit">
-        <meta property="og:url" content="https://pardnchiu.github.io/PDPlayerKit/">
+        <meta property="og:title" content="FlexPlyr | 邱敬幃 Pardn Chiu | GitHub.io">
+        <meta property="og:description" content="A pure JavaScript-based FlexPlyr, supporting YouTube and general video links, with play, pause, volume adjustment, and fullscreen capabilities.">
+        <meta property="og:image" content="https://opengraph.githubassets.com/1/pardnchiu/FlexPlyr">
+        <meta property="og:url" content="https://pardnchiu.github.io/FlexPlyr/">
         <meta property="og:site_name" content="邱敬幃 Pardn Chiu 的 Github Page">
         <meta property="og:type" content="website">
         <meta name="twitter:card" content="summary_large_image">
-        <meta property="twitter:title" content="PDPlayerKit | 邱敬幃 Pardn Chiu | GitHub.io">
-        <meta property="twitter:description" content="A pure JavaScript-based PDPlayerKit, supporting YouTube and general video links, with play, pause, volume adjustment, and fullscreen capabilities.">
-        <meta property="twitter:image" content="https://opengraph.githubassets.com/1/pardnchiu/PDPlayerKit">
-        <meta property="twitter:url" content="https://pardnchiu.github.io/PDPlayerKit/">
+        <meta property="twitter:title" content="FlexPlyr | 邱敬幃 Pardn Chiu | GitHub.io">
+        <meta property="twitter:description" content="A pure JavaScript-based FlexPlyr, supporting YouTube and general video links, with play, pause, volume adjustment, and fullscreen capabilities.">
+        <meta property="twitter:image" content="https://opengraph.githubassets.com/1/pardnchiu/FlexPlyr">
+        <meta property="twitter:url" content="https://pardnchiu.github.io/FlexPlyr/">
 
         <!-- Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-L5VYEZPVXX"></script>
@@ -51,23 +51,40 @@
         <link rel="preload" href="https://cdn.jsdelivr.net/npm/code-prettify@0.1.0/styles/desert.min.css" as="style" crossorigin="anonymous">
         <link href="https://cdn.jsdelivr.net/npm/code-prettify@0.1.0/styles/desert.min.css" rel="stylesheet">
 
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" as="style">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+
         <!-- 字體 -->
         <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" as="style" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
 
         <!-- 本地資源 -->
-        <link rel="stylesheet" href="./dist/PDPlayerKit.css">
+        <link rel="stylesheet" href="./dist/FlexPlyr.css">
         <link rel="stylesheet" href="./static/css/index.css">
-        <script src="./dist/PDPlayerKit.js"></script>
+        <script src="./dist/FlexPlyr.js"></script>
     </head>
 
     <body id="page">
 
         <header>
             <section>
-                <h1><span class="material-symbols-outlined">subscriptions</span>PDPlayerKit</h1>
-                <h2>模組化影片/音訊播放器</h2>
-                <p>簡單易用，適合個人網站嵌入。</p>
+                <section class="logo">
+                    <img src="./static/image/logo.svg" alt="">
+                    <section>
+                        <h1>FlexPlyr</h1>
+                        <h2>模組化影片/音訊播放器</h2>
+                    </section>
+                </section>
+                <section class="button">
+                    <a href="https://github.com/pardnchiu/FlexPlyr" title="GitHub" target="_blank">
+                        <i class="fa-brands fa-github"></i>
+                        GitHub
+                    </a>
+                    <a href="https://www.npmjs.com/package/@pardnchiu/flexplyr" title="npm" target="_blank">
+                        <i class="fa-brands fa-npm"></i>
+                        npm
+                    </a>
+                </section>
             </section>
             <section>
                 <section>
@@ -80,11 +97,11 @@
         <section>
             <h2>輕鬆嵌入到個人網站</h2>
             <p>只需從 cdn.jsdelivr.net 引入核心源碼</p>
-            <code>https://cdn.jsdelivr.net/npm/pdplayerkit@latest/dist/PDPlayerKit.js</code>
+            <code>https://cdn.jsdelivr.net/npm/@pardnchiu/flexplyr@[VERSION]/dist/FlexPlyr.js</code>
             <p>使用 JavaScript 代碼添加播放器</p>
             <pre class="prettyprint">
                 <code class="language-javascript">
-const dom = new PDPlayer({
+const dom = new FPlyr({
     // 選填：指定元件替換為播放器（元件的 ID）
     // 若未指定，需手動將 dom.body 加入至視圖中
     // id: "元件 ID",
@@ -228,12 +245,12 @@ const dom = new PDPlayer({
 
         <footer>
             <p>Created by <a href="https://github.com/pardnchiu" target="_blank">邱敬幃</a></p>
-            <p><a href="https://github.com/pardnchiu/PDPlayerKit" target="_blank">PDPlayerKit on GitHub</a></p>
+            <p><a href="https://github.com/pardnchiu/FlexPlyr" target="_blank">FlexPlyr on GitHub</a></p>
             <p>&copy; 2024</p>
         </footer>
 
         <script type="module">
-            // import { player as PDPlayer } from "./dist/PDPlayerKit.module.js";
+            // import { player as FPlyr } from "./dist/FlexPlyr.esm.js";
 
             let dragTarget, demoVideoCode, copyTimer, demoStylePlayer, demoVimeoPlayer, demoYoutubePlayer;
             const demoStyle = [
@@ -256,9 +273,9 @@ const dom = new PDPlayer({
                 };
 
                 function demoStyleCode(data) {
-                    return `\<script src="https://cdn.jsdelivr.net/npm/pdplayerkit@latest/dist/PDPlayerKit.js"\>\</script\>
+                    return `\<script src="https://cdn.jsdelivr.net/npm/@pardnchiu/flexplyr@latest/dist/FlexPlyr.js"\>\</script\>
 \<script\>
-const dom = new PDPlayer({
+const dom = new FPlyr({
     video: "${data[1]}",
     option: {
         panelType: "${data[0]}",
@@ -276,7 +293,7 @@ const dom = new PDPlayer({
                         change: e => {
                             const index = +document.getElementById("demo-style").dataset.selected;
                             const data = demoStyle[index];
-                            const dom = new PDPlayer({
+                            const dom = new FPlyr({
                                 type: data[0],
                                 video: data[1],
                                 volume: 100,
@@ -342,7 +359,7 @@ const dom = new PDPlayer({
                                 demoStylePlayer.destroy();
                             };
 
-                            demoStylePlayer = new PDPlayer({
+                            demoStylePlayer = new FPlyr({
                                 video: data[1],
                                 option: {
                                     panelType: data[0],
@@ -378,7 +395,7 @@ const dom = new PDPlayer({
                             const _this = e.target;
                             const index = +_this.dataset.index;
                             const data = demoAudio[index];
-                            const dom = new PDPlayer({
+                            const dom = new FPlyr({
                                 audio: data[1],
                                 option: {
                                     panelType: data[0],
@@ -399,7 +416,7 @@ const dom = new PDPlayer({
                             //     demoVimeoPlayer = null;
                             // };
 
-                            demoYoutubePlayer = new PDPlayer({
+                            demoYoutubePlayer = new FPlyr({
                                 youtube: "O5O3yK8DJCc",
                                 option: {
                                     panelType: "minimal",
@@ -422,7 +439,7 @@ const dom = new PDPlayer({
                             //     demoYoutubePlayer = null;
                             // };
 
-                            demoVimeoPlayer = new PDPlayer({
+                            demoVimeoPlayer = new FPlyr({
                                 vimeo: "458695734",
                                 option: {
                                     panelType: "minimal",
@@ -439,7 +456,7 @@ const dom = new PDPlayer({
                     },
                     when: {
                         rendered: _ => {
-                            const dom = new PDPlayer({
+                            const dom = new FPlyr({
                                 id: "header-video",
                                 video: "https://cdn.pixabay.com/video/2024/06/02/214940_tiny.mp4",
                             });
