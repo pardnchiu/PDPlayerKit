@@ -18,7 +18,7 @@
         <!-- SEO 標題與描述 -->
         <title>FlexPlyr - 模組化多風格播放器 - 邱敬幃</title>
         <meta name="title" content="FlexPlyr - 模組化多風格播放器 - 邱敬幃">
-        <meta name="description" content="FlexPlyr 是一款基於 JavaScript 的輕量級媒體播放器，支持 HTML5、YouTube 與 Vimeo，具備高度自定義控制面板與多種風格主題，為您的網站提供最佳播放體驗。">
+        <meta name="description" content="FlexPlyr 是一款基於 JavaScript 與原生 APIs 開發的輕量級媒體播放器，支持 HTML5、YouTube 與 Vimeo，具備高度自定義控制面板與多種風格主題，為您的網站提供最佳播放體驗。">
         <meta name="keywords" content="media-player, video-player, youtube-player, vimeo-player, javascript-library, lightweight, customizable, HTML5 播放器, 多媒體播放器, 自定義播放器, 邱敬幃">
         <meta name="author" content="邱敬幃 Pardn Chiu">
         <link rel="author" href="https://pardnchiu.github.io">
@@ -43,7 +43,6 @@
         <meta property="twitter:image" content="./static/image/website.jpg">
         <meta property="twitter:url" content="https://pardnchiu.github.io/FlexPlyr/">
 
-
         <!-- Google Verification -->
         <meta name="google-site-verification" content="YQQ2f6AchR8dcb55Az2BYd_mw4TrP0J1RApD-v2v65Y">
 
@@ -61,8 +60,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        <link rel="preload" href="https://cdn.jsdelivr.net/npm/pdquickui@0.5.4/dist/PDQuickUI.js" as="script" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/pdquickui@0.5.4/dist/PDQuickUI.js"></script>
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/@pardnchiu/quickui@0.6.2/dist/QuickUI.js" as="script">
+        <script src="https://cdn.jsdelivr.net/npm/@pardnchiu/quickui@0.6.2/dist/QuickUI.js" copyright="Pardn Ltd"></script>
 
         <link rel="preload" href="https://cdn.jsdelivr.net/npm/code-prettify@0.1.0/loader/run_prettify.min.js" as="script" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/code-prettify@0.1.0/loader/run_prettify.min.js"></script>
@@ -106,7 +105,7 @@
                     <img src="./static/image/logo.svg" alt="">
                     <section>
                         <h1>FlexPlyr</h1>
-                        <h2>模組化影片/音訊播放器</h2>
+                        <h2>{{ i18n.title }}</h2>
                     </section>
                 </section>
                 <section class="button">
@@ -129,75 +128,73 @@
         </header>
 
         <section>
-            <h2>輕鬆嵌入到個人網站</h2>
-            <p>只需從 cdn.jsdelivr.net 引入核心源碼</p>
+            <h2>{{ i18n.easy_to_use }}</h2>
+            <p>{{ i18n.add_from_cdn }}</p>
             <code>https://cdn.jsdelivr.net/npm/@pardnchiu/flexplyr@[VERSION]/dist/FlexPlyr.js</code>
-            <p>使用 JavaScript 代碼添加播放器</p>
+            <p>{{ i18n.use_js }}</p>
             <pre class="prettyprint">
                 <code class="language-javascript">
 const dom = new FPlyr({
-    // 選填：指定元件替換為播放器（元件的 ID）
-    // 若未指定，需手動將 dom.body 加入至視圖中
-    // id: "元件 ID",
+    // Specify the element to be replaced with the player (element ID)
+    // If not specified, the dom.body must be manually added to the view
+    // id: "Element ID",
 
-    // 必填：媒體來源設定，以下選項中僅能選擇一項
-    video: "[影片位置]",
-    // audio: "[音訊位置]",
+    // Required: Media source configuration, only one option can be selected
+    video: "[Video URL]",
+    // audio: "[Audio URL]",
     // vimeo: "[Vimeo ID]",
     // youtube: "[YouTube ID]"
 
-    // 選填：播放設置
     option: {
-        // 是否顯示滑桿，預設 true
         showThumb: true,
 
-        // 控制面板外觀風格，例如 "minimal" 或 "classic"
-        panelType: "[風格選擇]",
+        // Control panel appearance style
+        // e.g., "minimal" or "classic"
+        panelType: "[Style Option]",
 
-        // 控制面板按鈕，依需求選擇顯示的功能
+        // Control panel buttons
+        // choose the items to display as needed
         panel: [
             "play", "progress", "time", "timeMini", 
             "volume", "volumeMini", "rate", "full"
         ],
-        // 播放器預設音量
         volume: 100,
-        // 播放器預設靜音
         mute: false
     },
 
-    // 選填：事件監聽器，可監聽播放過程中的特定事件
+    // Optional: Event listeners to monitor specific events during playback
     when: {
         ready: function () {
-            console.log("播放器準備完成");
+            console.log("Player is ready");
         },
         playing: function () {
-            console.log("播放中");
+            console.log("Playing");
         },
         pause: function () {
-            console.log("暫停");
+            console.log("Paused");
         },
         end: function () {
-            console.log("播放結束");
+            console.log("Playback ended");
         },
         destroyed: function () {
-            console.log("已移除");
+            console.log("Player removed");
         }
     }
 });
 
-// 若無指定元件，需手動將播放器加入至 DOM 中
+// If no element is specified, the player must be manually added to the DOM
 (...).appendChild(dom.body);
 
-// 移除元件
-// dom.destory();
+// Remove the player
+// dom.destroy();
                 </code>
             </pre>
         </section>
 
         <section>
             <section>
-                <h2>多種不同風格的面板做選擇</h2>
-                <p>提供多種預設面板風格，方便快速使用<br>風格與按鈕皆可自訂</p>
+                <h2>{{ i18n.h2 }}</h2>
+                <p :html="i18n.h2_content"></p>
                 <section id="demo-style" class="button" data-selected="1">
                     <button @click="showDemoStyle" data-index="0">Default</button>
                     <button @click="showDemoStyle" data-index="1">Minimal</button>
@@ -206,7 +203,7 @@ const dom = new FPlyr({
                     <button @click="showDemoStyle" data-index="4">Simple</button>
                 </section>
                 <form>
-                    <p style="width: 100%">可拖曳變換位置</p>
+                    <p style="width: 100%">{{ i18n.drag }}</p>
                     <label draggable="true" @dragstart="dragStart" @dragend="dragEnd" @dragover="dragOver" @dragleave="dragLeave" @drop="drop" @change="change">
                         <input type="checkbox" name="buttonItem" value="play" checked>play
                     </label>
@@ -236,7 +233,7 @@ const dom = new FPlyr({
                         <span class="material-symbols-outlined">
                             content_copy
                         </span>
-                        複製代碼
+                        {{ i18n.copy }}
                     </button>
                 </form>
             </section>
@@ -252,8 +249,8 @@ const dom = new FPlyr({
                 <p id="sample-youtube-hint"></p>
             </section>
             <section>
-                <h2>支持 Vimeo / YouTube</h2>
-                <p>直接提供影片 ID 即可播放</p>
+                <h2>{{ i18n.stream }}</h2>
+                <p>{{ i18n.stream_content }}</p>
                 <section class="button" data-selected="0">
                     <button @click="showDemoVimeo">Viemo</button>
                     <button @click="showDemoYoutube">Youtube</button>
@@ -263,8 +260,8 @@ const dom = new FPlyr({
 
         <section>
             <section>
-                <h2>音源播放支援</h2>
-                <p>適合嵌入背景音樂或播客</p>
+                <h2>{{ i18n.audio }}</h2>
+                <p>{{ i18n.audio_content }}</p>
                 <section id="demo-audio" class="button" data-selected="0">
                     <button @click="showDemoAudio" data-index="0">Demo 1</button>
                     <button @click="showDemoAudio" data-index="1">Demo 2</button>
@@ -278,10 +275,16 @@ const dom = new FPlyr({
         </section>
 
         <footer>
-            <p>Created by <a href="https://github.com/pardnchiu" target="_blank">邱敬幃</a></p>
-            <p><a href="https://github.com/pardnchiu/FlexPlyr" target="_blank">FlexPlyr on GitHub</a></p>
+            <p>Created by <a href="https://github.com/pardnchiu" target="_blank">邱敬幃 Pardn Chiu</a></p>
+            <p><a href="https://github.com/pardnchiu/FlexPlyr" target="_blank">FlexPlyr</a> on GitHub</p>
+            <p>Render by <a href="https://github.com/pardnchiu/QuickUI" target="_blank">QuickUI</a></p>
             <p>&copy; 2024</p>
         </footer>
+
+        <a :href="./index.html?lang={{ change }}" class="lang">
+            <i class="fa-solid fa-globe"></i>
+            <span>{{ change }}</span>
+        </a>
 
         <script type="module">
             // import { player as FPlyr } from "./dist/FlexPlyr.esm.js";
@@ -301,6 +304,14 @@ const dom = new FPlyr({
             ];
 
             document.addEventListener("DOMContentLoaded", _ => {
+                const url = new URL(location.href);
+                const currentLanguage = navigator.language || navigator.userLanguage;
+                const lang = url.searchParams.get("lang");
+                let isZh = /^zh/i.test(currentLanguage);
+
+                if (lang != null) {
+                    isZh = /^zh/i.test(lang);
+                };
 
                 function getButtonItems() {
                     return [...document.querySelectorAll("input[name='buttonItem']:checked")].map(e => e.value);
@@ -323,6 +334,41 @@ const dom = new FPlyr({
 
                 const page = new QUI({
                     id: "page",
+                    i18n: {
+                        zh: {
+                            title: "模組化影片/音訊播放器",
+                            easy_to_use: "輕鬆嵌入到個人網站",
+                            add_from_cdn: "只需從 cdn.jsdelivr.net 引入核心源碼",
+                            use_js: "使用 JavaScript 代碼添加播放器",
+                            h2: "多種不同風格的面板做選擇",
+                            h2_content: "提供多種預設面板風格，方便快速使用<br>風格與按鈕皆可自訂",
+                            drag: "可拖曳變換位置",
+                            copy: "複製代碼",
+                            stream: "支持 Vimeo / YouTube",
+                            stream_content: "直接提供影片 ID 即可播放",
+                            audio: "音源播放支援",
+                            audio_content: "適合嵌入背景音樂或播客"
+                        },
+                        en: {
+                            title: "Modular Media Player",
+                            easy_to_use: "Easily Embed into Websites",
+                            add_from_cdn: "Include the code from cdn.jsdelivr.net",
+                            use_js: "Use JavaScript to add the player",
+                            h2: "Multiple Panel Styles",
+                            h2_content: "Various preset panel styles for quick use.<br>Both styles and buttons are customizable.",
+                            drag: "Draggable to change position",
+                            copy: "copy code",
+                            stream: "Supports Vimeo / YouTube",
+                            stream_content: "Provide the video ID to play",
+                            audio: "Supports audio playback",
+                            audio_content: "Ideal for embedding background music or podcasts"
+                        },
+                    },
+                    i18nLang: isZh ? "zh" : "en",
+                    data: {
+                        lang: isZh ? "zh" : "en",
+                        change: isZh ? "en" : "zh"
+                    },
                     event: {
                         change: e => {
                             const index = +document.getElementById("demo-style").dataset.selected;
@@ -416,9 +462,9 @@ const dom = new FPlyr({
                             try {
                                 navigator.clipboard.writeText(demoStyleCode(data));
 
-                                _this.innerHTML = _this.innerHTML.replace(/複製代碼/, "已複製");
+                                _this.innerHTML = _this.innerHTML.replace(/複製代碼/, "已複製").replace(/copy code/, "copied");
                                 copyTimer = setTimeout(() => {
-                                    _this.innerHTML = _this.innerHTML.replace(/已複製/, "複製代碼");
+                                    _this.innerHTML = _this.innerHTML.replace(/已複製/, "複製代碼").replace(/copied/, "copy code");
                                 }, 500);
                             }
                             catch (err) {
@@ -442,14 +488,6 @@ const dom = new FPlyr({
                             _this.parentElement.dataset.selected = index;
                         },
                         showDemoYoutube: e => {
-                            // if (demoYoutubePlayer != null) {
-                            //     return;
-                            // };
-                            // if (demoVimeoPlayer != null) {
-                            //     demoVimeoPlayer.destroy()
-                            //     demoVimeoPlayer = null;
-                            // };
-
                             demoYoutubePlayer = new FPlyr({
                                 youtube: "O5O3yK8DJCc",
                                 option: {
@@ -465,14 +503,6 @@ const dom = new FPlyr({
                             };
                         },
                         showDemoVimeo: e => {
-                            // if (demoVimeoPlayer != null) {
-                            //     return;
-                            // };
-                            // if (demoYoutubePlayer != null) {
-                            //     demoYoutubePlayer.destroy();
-                            //     demoYoutubePlayer = null;
-                            // };
-
                             demoVimeoPlayer = new FPlyr({
                                 vimeo: "458695734",
                                 option: {

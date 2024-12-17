@@ -8,8 +8,7 @@
 > Supports HTML5, YouTube, Vimeo with flexible themes and a complete control panel.
 
 ![tag](https://img.shields.io/badge/tag-JavaScript%20Library-bb4444) 
-![size](https://img.shields.io/github/size/pardnchiu/FlexPlyr/dist%2FFlexPlyr.js)
-![license](https://img.shields.io/github/license/pardnchiu/FlexPlyr)<br>
+![size](https://img.shields.io/github/size/pardnchiu/FlexPlyr/dist%2FFlexPlyr.js)<br>
 [![npm](https://img.shields.io/npm/v/@pardnchiu/flexplyr)](https://www.npmjs.com/package/@pardnchiu/flexplyr)
 [![download](https://img.shields.io/npm/dm/@pardnchiu/flexplyr)](https://www.npmjs.com/package/@pardnchiu/flexplyr)
 [![jsdeliver](https://img.shields.io/jsdelivr/npm/hm/@pardnchiu/flexplyr)](https://www.jsdelivr.com/package/npm/@pardnchiu/flexplyr)<br>
@@ -143,7 +142,8 @@ npm i @pardnchiu/flexplyr
 
 ## License
 
-This project is licensed under the [MIT License](https://github.com/pardnchiu/FlexPlyr/blob/main/LICENSE).
+This project is licensed under a **Proprietary License**.  
+You may use, install, and run this software only under the terms specified in the [End-User License Agreement (EULA)](https://github.com/pardnchiu/FlexPlyr/blob/main/LICENSE).
 
 ***
 

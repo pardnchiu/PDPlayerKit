@@ -8,8 +8,7 @@
 > 支援 HTML5、YouTube、Vimeo，提供靈活主題與完整控制面板。
 
 ![tag](https://img.shields.io/badge/tag-JavaScript%20Library-bb4444) 
-![size](https://img.shields.io/github/size/pardnchiu/FlexPlyr/dist%2FFlexPlyr.js)
-![license](https://img.shields.io/github/license/pardnchiu/FlexPlyr)<br>
+![size](https://img.shields.io/github/size/pardnchiu/FlexPlyr/dist%2FFlexPlyr.js)<br>
 [![npm](https://img.shields.io/npm/v/@pardnchiu/flexplyr)](https://www.npmjs.com/package/@pardnchiu/flexplyr)
 [![download](https://img.shields.io/npm/dm/@pardnchiu/flexplyr)](https://www.npmjs.com/package/@pardnchiu/flexplyr)
 [![jsdeliver](https://img.shields.io/jsdelivr/npm/hm/@pardnchiu/flexplyr)](https://www.jsdelivr.com/package/npm/@pardnchiu/flexplyr)<br>
@@ -144,7 +143,8 @@ npm i @pardnchiu/flexplyr
 
 ## 授權條款
 
-本專案依據 [MIT](https://github.com/pardnchiu/FlexPlyr/blob/main/LICENSE) 授權使用。
+本專案採用 **專有授權**。  
+更多詳細資訊，請參閱本倉庫中的 [最終使用者授權協議（EULA）](https://github.com/pardnchiu/FlexPlyr/blob/main/LICENSE)。
 
 ***
 

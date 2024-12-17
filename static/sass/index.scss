@@ -505,15 +505,39 @@ body {
         justify-content: center;
         align-items: center;
         flex-flow: column;
-        gap: 2rem;
+        gap: 1.5rem;
         padding: 5rem 0;
         width: 100%;
         background-color: #000;
-        color: #fff;
+        color: #ffffffcc;
 
         a {
-            text-decoration: none;
+            padding: 0.125rem 0;
             color: #fff;
+            text-decoration: none;
+            border-bottom: 0.5px solid #fff;
         }
+
+        p:last-child {
+            color: #ffffff;
+        }
+    }
+
+    >a.lang {
+        position: fixed;
+        right: 1.5rem;
+        bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0 1rem;
+        line-height: 2.5rem;
+        text-decoration: none;
+        color: #000;
+        background-color: #ffffffcc;
+        backdrop-filter: blur(1rem);
+        -webkit-backdrop-filter: blur(1rem);
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 8px #0000001a;
     }
 }
