@@ -1,11 +1,11 @@
-<img src="./static/image/logo.png" width=80>
+<img src="https://flexplyr.pardn.io/static/image/logo.png" width=80>
 
 # FlexPlyr
 
-*(原名：PDPlayerKit，自 `2.2.4` 版本起更名為 FlexPlyr)*
+> [!NOTE]
+> (原名：PDPlayerKit，自 `2.2.4` 版本起更名為 FlexPlyr)
 
-> 模組化 JavaScript 媒體播放器<br>
-> 支援 HTML5、YouTube、Vimeo，提供靈活主題與完整控制面板。
+> 純 JavaScript 打造的模組化媒體播放器，支援 HTML5、YouTube、Vimeo，提供靈活主題與完整控制面板。
 
 ![tag](https://img.shields.io/badge/tag-JavaScript%20Library-bb4444) 
 ![size](https://img.shields.io/github/size/pardnchiu/FlexPlyr/dist%2FFlexPlyr.js)<br>
@@ -32,15 +32,6 @@
 ### 全面的事件監聽
 - 支持多種事件監聽： (如 ready、playing、pause、end)，方便深度擴展。
 
-### 多版本支持
-- 提供 **ESM (ECMAScript Module)** 與 **一般版本**，適用於多種開發環境，靈活集成。
-
-### 更直觀的控制按鈕
-- 按鈕圖示使用 [Google Icons](https://fonts.google.com/icons)，清晰、現代，適配各類主題風格。
-
-### 友善授權
-- 授權從 **GPL 3.0** 調整為 **MIT**，方便自由使用與修改，適應更多商業或個人項目。
-
 ## 安裝方式
 
 ### 從 npm 安裝
@@ -49,103 +40,115 @@ npm i @pardnchiu/flexplyr
 ```
 
 ### 從 CDN 引入
-- **引入 `FlexPlyr` 套件**
-    ```html
-    <!-- Version 2.2.4 and above -->
-    <script src="https://cdn.jsdelivr.net/npm/@pardnchiu/flexplyr@[VERSION]/dist/FlexPlyr.js"></script>
 
-    <!-- Version 2.2.3 and below -->
-    <script src="https://cdn.jsdelivr.net/npm/pdplayerkit@[VERSION]/dist/PDPlayerKit.js"></script>
-    ```
-- **Module 版本**
-    ```javascript
-    // Version 2.2.4 and above
-    import { FPlyr } from "https://cdn.jsdelivr.net/npm/@pardnchiu/flexplyr@[VERSION]/dist/FlexPlyr.esm.js";
+#### 引入 `FlexPlyr` 套件
+```html
+<!--  2.2.4 版本以上 -->
+<script src="https://cdn.jsdelivr.net/npm/@pardnchiu/flexplyr@[VERSION]/dist/FlexPlyr.js"></script>
 
-    // Version 2.2.3 and below
-    import { player } from "https://cdn.jsdelivr.net/npm/pdplayerkit@[VERSION]/dist/PDPlayerKit.module.js";
-    ```
-- **初始化 `FPlyr`**
-    ```Javascript
-    // Version 2.2.4 and above
-    // Unified: FPlyr
+<!-- 2.2.3 版本以下 -->
+<script src="https://cdn.jsdelivr.net/npm/pdplayerkit@[VERSION]/dist/PDPlayerKit.js"></script>
+```
 
-    // Version 2.2.3 and below
-    // IIFE: PDPlayer
-    // ESM: player
+#### Module 版本
+```javascript
+// 2.2.4 版本以上
+import { FPlyr } from "https://cdn.jsdelivr.net/npm/@pardnchiu/flexplyr@[VERSION]/dist/FlexPlyr.esm.js";
 
-    const dom = new FPlyr({
-        // 選填：指定元件替換為播放器（元件的 ID）
-        // 若未指定，需手動將 dom.body 加入至視圖中
-        // id: "元件 ID",
+// 2.2.3 版本以下
+import { player } from "https://cdn.jsdelivr.net/npm/pdplayerkit@[VERSION]/dist/PDPlayerKit.module.js";
+```
+
+## 使用方法
+
+### 初始化 `FPlyr`
+```Javascript
+// 2.2.4 版本以上
+// 統一使用: FPlyr
+
+// 2.2.3 版本以下
+// IIFE: PDPlayer
+// ESM: player
+
+const dom = new FPlyr({
+    // 選填：指定元件替換為播放器（元件的 ID）
+    // 若未指定，需手動將 dom.body 加入至視圖中
+    // id: "元件 ID",
 
 
-        // 必填：媒體來源設定，以下選項中僅能選擇一項
-        video: "[影片位置]",
-        // audio: "[音訊位置]",
-        // vimeo: "[Vimeo ID]",
-        // youtube: "[YouTube ID]"
+    // 必填：媒體來源設定，以下選項中僅能選擇一項
+    video: "[影片位置]",
+    // audio: "[音訊位置]",
+    // vimeo: "[Vimeo ID]",
+    // youtube: "[YouTube ID]"
 
-        // 選填：播放設置
-        option: {   
-            // 是否顯示滑桿，預設 true
-            showThumb: true,
+    // 選填：播放設置
+    option: {   
+        // 是否顯示滑桿，預設 true
+        showThumb: true,
 
-            // 控制面板外觀風格，例如 "minimal" 或 "classic"
-            panelType: "[風格選擇]",
+        // 控制面板外觀風格，例如 "minimal" 或 "classic"
+        panelType: "[風格選擇]",
 
-            // 控制面板按鈕，依需求選擇顯示的功能
-            panel: [
-                "play", "progress", "time", "timeMini", 
-                "volume", "volumeMini", "rate", "full"
-            ],
-            // 播放器預設音量
-            volume: 100,
-            // 播放器預設靜音
-            mute: false
+        // 控制面板按鈕，依需求選擇顯示的功能
+        panel: [
+            "play", "progress", "time", "timeMini", 
+            "volume", "volumeMini", "rate", "full"
+        ],
+        // 播放器預設音量
+        volume: 100,
+        // 播放器預設靜音
+        mute: false
+    },
+
+    // 選填：事件監聽器，可監聽播放過程中的特定事件
+    when: {
+        ready: function () {
+            console.log("播放器準備完成");
         },
-
-        // 選填：事件監聽器，可監聽播放過程中的特定事件
-        when: {
-            ready: function () {
-                console.log("播放器準備完成");
-            },
-            playing: function () {
-                console.log("播放中");
-            },
-            pause: function () {
-                console.log("暫停");
-            },
-            end: function () {
-                console.log("播放結束");
-            },
-            destroyed: function () {
-                console.log("已移除");
-            }
+        playing: function () {
+            console.log("播放中");
+        },
+        pause: function () {
+            console.log("暫停");
+        },
+        end: function () {
+            console.log("播放結束");
+        },
+        destroyed: function () {
+            console.log("已移除");
         }
-    });
+    }
+});
 
-    // 若無指定元件，需手動將播放器加入至 DOM 中
-    (...).appendChild(dom.body);
+// 若無指定元件，需手動將播放器加入至 DOM 中
+(...).appendChild(dom.body);
 
-    // 移除元件
-    // dom.destory();
-    ```
-
-
-## 開發者
-
-<img src="https://avatars.githubusercontent.com/u/25631760" align="left" width="96" height="96" style="margin-right: 0.5rem;" />
-
-<h4 style="padding-top: 0">邱敬幃 Pardn Chiu</h4>
-
-[![](https://pardn.io/image/mail.svg)](mailto:dev@pardn.io) [![](https://skillicons.dev/icons?i=linkedin)](https://linkedin.com/in/pardnchiu) 
+// 移除元件
+// dom.destory();
+```
 
 ## 授權條款
 
-本專案採用 **專有授權**。  
-更多詳細資訊，請參閱本倉庫中的 [最終使用者授權協議（EULA）](https://github.com/pardnchiu/FlexPlyr/blob/main/LICENSE)。
+本專案採用類 MIT 授權，但僅提供混淆後的程式碼：
+- 與 MIT 相同：可自由使用、修改、再散布，包含商業用途
+- 主要差異：預設僅提供混淆版程式碼，原始碼需另外購買
+- 授權內容：必須保留原始版權聲明 (與 MIT 相同)
+
+詳細條款與條件請參閱[軟體使用協議](https://github.com/pardnchiu/FlexPlyr/blob/main/LICENSE)。
+
+## 開發者
+
+<img src="https://avatars.githubusercontent.com/u/25631760" align="left" width="96" height="96" style="margin-right: 0.5rem;">
+
+<h4 style="padding-top: 0">邱敬幃 Pardn Chiu</h4>
+
+<a href="mailto:dev@pardn.io" target="_blank">
+    <img src="https://pardn.io/image/email.svg" width="48" height="48">
+</a> <a href="https://linkedin.com/in/pardnchiu" target="_blank">
+    <img src="https://pardn.io/image/linkedin.svg" width="48" height="48">
+</a>
 
 ***
 
-©️ 2023 [邱敬幃 Pardn Chiu](https://www.linkedin.com/in/pardnchiu)
+©️ 2023 [邱敬幃 Pardn Chiu](https://pardn.io)

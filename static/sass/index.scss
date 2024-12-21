@@ -22,7 +22,107 @@ body {
     background: #fff;
     overflow: scroll;
 
-    >header:first-child {
+    >nav {
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 $_16;
+        width: 100%;
+        height: $_64;
+        background-color: #ffffffce;
+        backdrop-filter: blur(1rem);
+        -webkit-backdrop-filter: blur(1rem);
+        z-index: 1000;
+
+        >section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: $_16;
+            width: 100%;
+            max-width: 1440px;
+
+            >section:not(.center) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: $_16;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    line-height: $_32;
+                    text-decoration: none;
+                    border-radius: $_8;
+                    transition: 0.3s;
+
+                    strong {
+                        color: #000;
+                        font-size: $_20;
+                    }
+                }
+            }
+
+            div {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                flex-flow: column;
+                gap: $_4;
+                padding: 0 $_12;
+                height: $_32;
+                border: 1px solid #00000034;
+                border-radius: $_8;
+                overflow: hidden;
+                cursor: pointer;
+                transition: 0.3s;
+
+                &[data-show="1"] {
+                    margin-top: $_40;
+                    padding: $_4 $_12;
+                    height: $_72 + $_2;
+                    background-color: #ffffffce;
+                    backdrop-filter: blur(1rem);
+                    -webkit-backdrop-filter: blur(1rem);
+                }
+
+                &[data-index="0"] p:nth-child(1) {
+                    order: 0
+                }
+
+                &[data-index="1"] p:nth-child(2) {
+                    order: 0
+                }
+
+                * {
+                    flex-shrink: 0;
+                }
+
+                >p {
+                    order: 1;
+                    line-height: $_32;
+                    font-size: $_14;
+                }
+            }
+
+            img {
+                left: calc(-100% - $_32);
+                width: $_48;
+                height: $_48;
+                transition: 0.3s;
+
+                @media screen and (min-width: 480px) {
+                    left: 0;
+                }
+            }
+        }
+    }
+
+    >header:nth-child(2) {
         position: relative;
         display: flex;
         justify-content: center;
@@ -75,7 +175,12 @@ body {
                 align-items: center;
                 flex-flow: row wrap;
                 width: 100%;
-                gap: $_16;
+                gap: $_8 $_16;
+
+                >span {
+                    display: block;
+                    width: 100%;
+                }
 
                 a {
                     display: flex;
@@ -127,14 +232,9 @@ body {
                         }
                     }
 
-                    &:nth-child(3) {
-
-                        @media (hover: hover) {
-
-                            &:hover {
-                                border: 1px solid #000;
-                            }
-                        }
+                    &:last-child {
+                        border: none;
+                        color: #000;
                     }
                 }
             }
@@ -251,6 +351,17 @@ body {
     }
 
     >section:nth-child(2) {
+        background-color: #fff;
+        padding: 0 $_32;
+        min-height: 100vh;
+
+        >section {
+            width: 100%;
+            max-width: $_800;
+        }
+    }
+
+    >section:nth-child(3) {
         position: relative;
         display: flex;
         justify-content: center;
@@ -272,7 +383,6 @@ body {
 
         p {
             text-align: center;
-
         }
 
         pre {
@@ -297,9 +407,9 @@ body {
         }
     }
 
-    >section:nth-child(3),
     >section:nth-child(4),
-    >section:nth-child(5) {
+    >section:nth-child(5),
+    >section:nth-child(6) {
         position: relative;
         display: flex;
         justify-content: center;
